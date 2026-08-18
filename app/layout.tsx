@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import GrfaNav from "./components/GrfaNav";
 import GrfaFooter from "./components/GrfaFooter";
+import FeedbackWidget from "./components/FeedbackWidget";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,6 +29,7 @@ export default function RootLayout({
         <GrfaNav />
         {children}
         <GrfaFooter />
+        <FeedbackWidget />
       </body>
     </html>
   );
