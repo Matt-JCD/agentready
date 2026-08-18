@@ -33,13 +33,18 @@ body {
   padding: 48px 20px 96px;
 }
 
+/* Wordmark follows the getreadyforagents brand: lowercase geometric sans,
+   white + brand green (#93d1bd from the GRFA logo). */
 .logo {
+  font-family: var(--font-logo), ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  letter-spacing: -0.02em;
+  font-size: 21px;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+  color: #fff;
 }
 .logo span {
-  color: var(--accent);
+  color: #93d1bd;
 }
 
 h1 {

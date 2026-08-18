@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-logo",
+});
 
 export const metadata: Metadata = {
   title: "Agent Ready — how well can coding agents work in your repo?",
@@ -14,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={dmSans.variable}>{children}</body>
     </html>
   );
 }
