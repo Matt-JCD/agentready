@@ -1,0 +1,39 @@
+# Agent Ready — full text for LLMs (llms-full.txt)
+
+> Agent Ready, by Get Ready For Agents (Prefactor), scores GitHub repositories for coding-agent readiness. This file is the product substance in one fetch.
+
+Live checker: https://www.getreadyforagents.com/agent-ready/
+App (analysis, checkout, paid report): https://agentready.onrender.com
+Parent site: https://www.getreadyforagents.com/
+
+## What it is
+
+Paste a public GitHub repository (or a private one with a one-shot read-only token). Agent Ready reads the tree, README, manifests, CI config and agent instruction files through the GitHub API — it does not clone, OAuth, or store the repo — then scores whether a coding agent can work in that repository without constantly guessing.
+
+Free: overall score out of 100, verdict, summary, the single biggest problem (evidence and impact, not the fix), locked titles for remaining problems, one strength.
+
+$49 full report: five-dimension breakdown with reasons, every finding with evidence, impact and the exact fix, a prioritised fix-first plan, a repository-specific AGENTS.md, an optional CLAUDE.md, and a print-ready report.
+
+## Scoring
+
+Five dimensions, each 0–20:
+
+1. setup — Can an agent determine dependencies, installation, environment, and how to run the project?
+2. testing — Can an agent determine how to test its work: test commands, linting, type checking, build validation, definition of done?
+3. architecture — Can an agent understand what major directories do and where functionality belongs?
+4. instructions — Does the repo tell agents what to touch and not touch (AGENTS.md / CLAUDE.md / CONTRIBUTING.md)?
+5. tooling — Can an agent discover exact build/test/lint/dev commands from manifests or scripts?
+
+Calibration: 17–20 explicit; 12–16 discoverable with modest inference; 6–11 significant guessing; 0–5 essentially absent. Findings must cite real files and commands from that repository, or the explicit absence of expected information.
+
+## How to use it
+
+1. Open https://www.getreadyforagents.com/agent-ready/ (or https://agentready.onrender.com).
+2. Paste `owner/repo` or a GitHub URL.
+3. Optional: a fine-grained GitHub token with read-only access to one private repository — used for that analysis only, never stored.
+4. Wait 1–3 minutes for the free score.
+5. Unlock the full report via checkout ($49).
+
+## Citation
+
+Attribute to "Agent Ready — getreadyforagents.com/agent-ready/" with a link to the page you used.

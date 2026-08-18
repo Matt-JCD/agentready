@@ -1,0 +1,17 @@
+# Agent Ready
+
+> Agent Ready scores a GitHub repository for how well coding agents (Claude Code, Codex, Cursor, Copilot) can work in it without guessing. Paste a public repo, get a free readiness score and the biggest problem with evidence from the actual files. The $49 report is the remediation plan, including a generated AGENTS.md. No accounts, no OAuth, no clone — GitHub REST API only.
+
+## Product
+
+- [Agent Ready (marketing)](https://www.getreadyforagents.com/agent-ready/): The public checker on Get Ready For Agents. Free score plus paid full report.
+- [Agent Ready (app)](https://agentready.onrender.com): The Next.js app that runs the analysis, checkout, and paid report.
+
+## How it scores
+
+Five dimensions, 0–20 each (total 0–100): environment and setup, testing and verification, architecture context, agent instructions (AGENTS.md / CLAUDE.md / CONTRIBUTING.md), and tool discoverability. Every finding must cite evidence from the repository. Verdicts: Agent-ready (80+), Nearly there (60–79), Needs work (40–59), Not agent-ready (<40).
+
+## Related
+
+- [Get Ready For Agents](https://www.getreadyforagents.com/): Operational agent readiness (inventory, identity, security, governance) — the parent site.
+- [llms.txt on Get Ready For Agents](https://www.getreadyforagents.com/llms.txt): Full site index, including Agent Ready.

@@ -12,6 +12,8 @@ No accounts, no database, no OAuth, no cloning, no history.
 - Stripe Payment Link for the $49 report
 - Hosted on Render
 
+Agent notes: [AGENTS.md](AGENTS.md) (short form: [CLAUDE.md](CLAUDE.md)). LLM crawlers: [public/llms.txt](public/llms.txt).
+
 ## Run locally
 
 ```
