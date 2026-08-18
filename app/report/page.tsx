@@ -197,13 +197,25 @@ function Report() {
 
           {ev.recommendations.length > 0 && (
             <>
-              <div className="section-label">Fix first</div>
+              <div className="section-label">The build plan</div>
+              <p className="dim-reason">
+                In priority order, each step built on what your repository
+                already has.
+              </p>
               <div className="card">
                 <ol className="fix-first">
                   {ev.recommendations.map((r, i) => (
                     <li key={i}>
                       <strong>{r.title}</strong>
+                      {r.effort && (
+                        <span className={`effort effort--${r.effort}`}>
+                          {r.effort}
+                        </span>
+                      )}
                       <p className="dim-reason">{r.detail}</p>
+                      {r.builds_on && (
+                        <p className="builds-on">Builds on: {r.builds_on}</p>
+                      )}
                     </li>
                   ))}
                 </ol>
@@ -265,10 +277,16 @@ function Report() {
 
           {ev.strengths.length > 0 && (
             <>
-              <div className="section-label">Strengths</div>
+              <div className="section-label">
+                What you already have — and how to use it
+              </div>
               {ev.strengths.map((s, i) => (
-                <div className="strength" key={i}>
-                  {s}
+                <div className="problem low" key={i}>
+                  <h3>✓ {s.title}</h3>
+                  <p>{s.evidence}</p>
+                  <p>
+                    <strong>Leverage it:</strong> {s.leverage}
+                  </p>
                 </div>
               ))}
             </>

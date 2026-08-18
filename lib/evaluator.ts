@@ -21,6 +21,19 @@ export interface TaskSimulation {
   narrative: string;
 }
 
+export interface Strength {
+  title: string;
+  evidence: string;
+  leverage: string;
+}
+
+export interface Recommendation {
+  title: string;
+  detail: string;
+  builds_on: string;
+  effort: "minutes" | "hours" | "days";
+}
+
 export interface Evaluation {
   score: number;
   verdict: string;
@@ -33,8 +46,8 @@ export interface Evaluation {
     tooling: Dimension;
   };
   problems: Problem[];
-  strengths: string[];
-  recommendations: { title: string; detail: string }[];
+  strengths: Strength[];
+  recommendations: Recommendation[];
   task_simulations: TaskSimulation[];
   projected_score: number;
   agents_md: string;

@@ -179,7 +179,9 @@ export async function POST(req: NextRequest) {
           severity: p.severity,
           title: p.title,
         })),
-        strength: evaluation.strengths[0] ?? null,
+        strength: evaluation.strengths[0]
+          ? `${evaluation.strengths[0].title} — ${evaluation.strengths[0].evidence}`
+          : null,
         problemCount: evaluation.problems.length,
         projectedScore: evaluation.projected_score,
       },

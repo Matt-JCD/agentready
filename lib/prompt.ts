@@ -29,9 +29,13 @@ task_simulations: simulate exactly 3 realistic tasks a coding agent would be giv
 
 projected_score: the total score (0-100) this repository would plausibly reach if the recommendations were implemented. Be realistic — implementing documentation fixes cannot make a repo with no tests score 20/20 on testing.
 
-Strengths: things the repo already does well for agents, with evidence. Empty array if none.
+Strengths: the real assets this repository ALREADY HAS for agents — each as {title, evidence, leverage}. evidence cites the actual files/scripts. leverage is a concrete, prescriptive way to compound the asset (e.g. "test/tests.md already documents the suite — link it from a Validation section in README and cite it in AGENTS.md so agents treat it as canonical"). Empty array only if there is genuinely nothing.
 
-Recommendations: an ordered, prioritized fix list (most impactful first) with concrete detail — actual commands to document, actual files to create or change.
+Recommendations: the prioritized build plan (most impactful first). This is constructive engineering guidance that USES what was found — not a list of gaps restated as to-dos. Each item:
+- title: the change, as an imperative.
+- detail: complete enough to act on immediately — name the exact file to create or edit and include the actual content, sections, or commands to add, derived from what the repository already contains (its real scripts, targets, workflows, docs). Never invent commands that don't exist.
+- builds_on: the existing files/assets this recommendation leverages (e.g. "package.json test script + test/tests.md + .github/workflows/ci.yml"). Empty string only when the change is genuinely greenfield.
+- effort: "minutes" | "hours" | "days" — a realistic estimate for one developer.
 
 agents_md: generate a complete, immediately usable AGENTS.md for THIS repository. Use only commands and paths that exist in the supplied contents. Include: repository structure, development setup, validation commands to run before completing a task, and constraints/gotchas. If you cannot verify a command exists, do not invent it — instead include a clearly marked TODO for the maintainer.
 
@@ -116,7 +120,19 @@ export const EVALUATION_SCHEMA = {
         required: ["severity", "title", "evidence", "impact", "fix"],
       },
     },
-    strengths: { type: "array", items: { type: "string" } },
+    strengths: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          title: { type: "string" },
+          evidence: { type: "string" },
+          leverage: { type: "string" },
+        },
+        required: ["title", "evidence", "leverage"],
+      },
+    },
     recommendations: {
       type: "array",
       items: {
@@ -125,8 +141,10 @@ export const EVALUATION_SCHEMA = {
         properties: {
           title: { type: "string" },
           detail: { type: "string" },
+          builds_on: { type: "string" },
+          effort: { type: "string", enum: ["minutes", "hours", "days"] },
         },
-        required: ["title", "detail"],
+        required: ["title", "detail", "builds_on", "effort"],
       },
     },
     task_simulations: {
