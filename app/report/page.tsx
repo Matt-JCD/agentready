@@ -5,11 +5,11 @@ import { useSearchParams } from "next/navigation";
 import type { Evaluation } from "@/lib/evaluator";
 
 const DIMENSION_LABELS: Record<string, string> = {
-  setup: "Setup",
-  testing: "Testing",
-  architecture: "Architecture",
-  instructions: "Instructions",
-  tooling: "Tooling",
+  setup: "Environment & setup",
+  testing: "Testing & verification",
+  architecture: "Architecture context",
+  instructions: "Agent instructions",
+  tooling: "Tool discoverability",
 };
 
 const severityIcon: Record<string, string> = {
@@ -28,7 +28,7 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   const [copied, setCopied] = useState(false);
   return (
     <button
-      className="copy"
+      className="copy no-print"
       onClick={async () => {
         await navigator.clipboard.writeText(text);
         setCopied(true);
@@ -46,42 +46,33 @@ function Report() {
   const [ev, setEv] = useState<Evaluation | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [reportDate, setReportDate] = useState("");
 
   useEffect(() => {
+    setReportDate(
+      new Date().toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    );
     const fromQuery = params.get("repo");
     let target = fromQuery;
-    let cached: { repo: string; evaluation: Evaluation } | null = null;
     try {
-      const raw = sessionStorage.getItem("agentready:last");
-      if (raw) cached = JSON.parse(raw);
-      if (!target) {
-        target =
-          sessionStorage.getItem("agentready:paid-repo") ||
-          cached?.repo ||
-          null;
-      }
+      if (!target) target = sessionStorage.getItem("agentready:paid-repo");
     } catch {}
 
     if (!target) {
-      setError(
-        "No repository specified. Run your repo on the homepage first."
-      );
+      setError("No repository specified. Run your repo on the homepage first.");
       setLoading(false);
       return;
     }
     setRepo(target);
 
-    // Reuse the analysis from this session if it matches; otherwise re-run.
-    if (cached && cached.repo === target && cached.evaluation) {
-      setEv(cached.evaluation);
-      setLoading(false);
-      return;
-    }
-
     fetch("/api/analyse", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ repo: target }),
+      body: JSON.stringify({ repo: target, full: true }),
     })
       .then(async (res) => {
         const data = await res.json();
@@ -93,11 +84,8 @@ function Report() {
   }, [params]);
 
   return (
-    <main className="wrap">
-      <div className="logo">
-        Agent <span>Ready</span>
-      </div>
-      <p style={{ marginTop: 24 }}>
+    <main className="wrap wrap--report">
+      <p className="no-print" style={{ marginBottom: 24 }}>
         <a className="back" href="/">
           ← Check another repo
         </a>
@@ -105,17 +93,26 @@ function Report() {
 
       {loading && (
         <p className="loading">
-          Preparing your full report <span className="dot">●</span>
+          Generating your full report <span className="dot">●</span> a fresh,
+          complete evaluation takes 1–3 minutes.
         </p>
       )}
       {error && <p className="error">{error}</p>}
 
-      {ev && (
-        <>
-          <div className="card">
-            <div style={{ color: "var(--muted)", marginBottom: 12 }}>
-              {repo} · Full Agent Readiness Report
+      {ev && repo && (
+        <article className="report">
+          {/* Cover block — doubles as the PDF title page header */}
+          <div className="report-cover card">
+            <div className="report-brand">
+              <span className="logo logo--sm">
+                agent <span>ready</span>
+              </span>
+              <span className="report-brand-by">
+                Full Repository Report · by Get Ready for Agents
+              </span>
             </div>
+            <h1 className="report-title">{repo}</h1>
+            <p className="report-date">Agent readiness report · {reportDate}</p>
             <div className="score-row">
               <div className="score-big">
                 {ev.score}
@@ -126,9 +123,16 @@ function Report() {
               </div>
             </div>
             <p className="summary">{ev.summary}</p>
+            <button
+              className="primary no-print"
+              style={{ marginTop: 22 }}
+              onClick={() => window.print()}
+            >
+              Download as PDF
+            </button>
           </div>
 
-          <div className="section-label">Breakdown</div>
+          <div className="section-label">Readiness breakdown</div>
           <div className="card">
             {Object.entries(ev.dimensions).map(([key, dim]) => (
               <div key={key} style={{ marginBottom: 18 }}>
@@ -151,9 +155,9 @@ function Report() {
             <>
               <div className="section-label">Fix first</div>
               <div className="card">
-                <ol style={{ paddingLeft: 20 }}>
+                <ol className="fix-first">
                   {ev.recommendations.map((r, i) => (
-                    <li key={i} style={{ marginBottom: 14 }}>
+                    <li key={i}>
                       <strong>{r.title}</strong>
                       <p className="dim-reason">{r.detail}</p>
                     </li>
@@ -211,10 +215,16 @@ function Report() {
               <CopyButton text={ev.claude_md} label="Copy CLAUDE.md" />
             </>
           )}
-        </>
+
+          <p className="report-colophon">
+            Generated by Agent Ready (agentready.onrender.com), a Get Ready for
+            Agents product by Prefactor. Every finding is grounded in evidence
+            from the repository at the time of analysis.
+          </p>
+        </article>
       )}
 
-      <p className="footer">
+      <p className="footer no-print">
         Questions? Reply to your Stripe receipt — it reaches a human.
       </p>
     </main>

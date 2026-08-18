@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { fetchRepoData, PublicError } from "@/lib/github";
 import { evaluateRepo } from "@/lib/evaluator";
 
-export const maxDuration = 120;
+export const maxDuration = 300;
 
 export async function POST(req: NextRequest) {
   let body: any;
@@ -40,11 +40,41 @@ export async function POST(req: NextRequest) {
     }
 
     const evaluation = await evaluateRepo(data);
+    const repo = `${data.owner}/${data.repo}`;
+    const stripeUrl = process.env.STRIPE_PAYMENT_URL || null;
 
+    // Full report (the paid view fetches with full: true).
+    if (body?.full) {
+      return NextResponse.json({ repo, evaluation, stripeUrl });
+    }
+
+    // Free teaser: score, verdict, summary, the single biggest problem
+    // (without its fix), locked titles for the rest, one strength. The full
+    // findings, fixes, breakdown reasons, and generated files never leave the
+    // server on a free call.
+    const [top, ...rest] = evaluation.problems;
     return NextResponse.json({
-      repo: `${data.owner}/${data.repo}`,
-      evaluation,
-      stripeUrl: process.env.STRIPE_PAYMENT_URL || null,
+      repo,
+      free: {
+        score: evaluation.score,
+        verdict: evaluation.verdict,
+        summary: evaluation.summary,
+        topProblem: top
+          ? {
+              severity: top.severity,
+              title: top.title,
+              evidence: top.evidence,
+              impact: top.impact,
+            }
+          : null,
+        lockedProblems: rest.map((p) => ({
+          severity: p.severity,
+          title: p.title,
+        })),
+        strength: evaluation.strengths[0] ?? null,
+        problemCount: evaluation.problems.length,
+      },
+      stripeUrl,
     });
   } catch (err: any) {
     if (err instanceof PublicError) {

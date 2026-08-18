@@ -1,7 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import type { Evaluation, Problem } from "@/lib/evaluator";
+
+interface FreeReport {
+  score: number;
+  verdict: string;
+  summary: string;
+  topProblem: {
+    severity: string;
+    title: string;
+    evidence: string;
+    impact: string;
+  } | null;
+  lockedProblems: { severity: string; title: string }[];
+  strength: string | null;
+  problemCount: number;
+}
 
 function verdictClass(score: number) {
   if (score >= 80) return "good";
@@ -21,7 +35,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<{
     repo: string;
-    evaluation: Evaluation;
+    free: FreeReport;
     stripeUrl: string | null;
   } | null>(null);
 
@@ -40,9 +54,8 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Analysis failed");
       setResult(data);
-      // Stash for the /report page so the paid view doesn't re-run analysis.
       try {
-        sessionStorage.setItem("agentready:last", JSON.stringify(data));
+        sessionStorage.setItem("agentready:paid-repo", data.repo);
       } catch {}
     } catch (err: any) {
       setError(err.message);
@@ -51,19 +64,19 @@ export default function Home() {
     }
   }
 
-  const ev = result?.evaluation;
-  const topProblems: Problem[] = ev?.problems.slice(0, 3) ?? [];
+  const free = result?.free;
 
   return (
     <main className="wrap">
-      <div className="logo">
-        Agent <span>Ready</span>
-      </div>
-
-      <h1>How well can coding agents work in your repo?</h1>
+      <p className="eyebrow">
+        <span className="spark"></span>Free agent readiness score
+      </p>
+      <h1>
+        How well can coding agents work in your <em>repo</em>?
+      </h1>
       <p className="sub">
-        Paste a public GitHub repository. Get a readiness score, the biggest
-        problems, and evidence from your actual repo — free.
+        Paste a public GitHub repository. Get a readiness score and your
+        biggest problem, with evidence from the actual repo — free.
       </p>
 
       <form className="repo-form" onSubmit={analyse}>
@@ -85,76 +98,83 @@ export default function Home() {
         <p className="loading">
           Reading repository structure, README, manifests and CI config, then
           evaluating agent readiness <span className="dot">●</span> this takes
-          20–60 seconds.
+          1–3 minutes.
         </p>
       )}
 
-      {result && ev && (
+      {result && free && (
         <>
           <div className="card">
-            <div style={{ color: "var(--muted)", marginBottom: 12 }}>
-              {result.repo} · Agent Readiness
-            </div>
+            <div className="card-kicker">{result.repo} · Agent Readiness</div>
             <div className="score-row">
               <div className="score-big">
-                {ev.score}
+                {free.score}
                 <small> / 100</small>
               </div>
-              <div className={`verdict ${verdictClass(ev.score)}`}>
-                {ev.verdict}
+              <div className={`verdict ${verdictClass(free.score)}`}>
+                {free.verdict}
               </div>
             </div>
-            <p className="summary">{ev.summary}</p>
+            <p className="summary">{free.summary}</p>
           </div>
 
-          {topProblems.length > 0 && (
+          {free.topProblem && (
             <>
-              <div className="section-label">Biggest problems</div>
-              {topProblems.map((p, i) => (
-                <div className={`problem ${p.severity}`} key={i}>
+              <div className="section-label">Your biggest problem</div>
+              <div className={`problem ${free.topProblem.severity}`}>
+                <h3>
+                  {severityIcon[free.topProblem.severity]}{" "}
+                  {free.topProblem.title}
+                </h3>
+                <p>{free.topProblem.evidence}</p>
+                <p>
+                  <strong>Why it matters:</strong> {free.topProblem.impact}
+                </p>
+              </div>
+            </>
+          )}
+
+          {free.lockedProblems.length > 0 && (
+            <>
+              <div className="section-label">
+                Also found in {result.repo.split("/")[1]}
+              </div>
+              {free.lockedProblems.map((p, i) => (
+                <div className={`problem locked ${p.severity}`} key={i}>
                   <h3>
                     {severityIcon[p.severity]} {p.title}
                   </h3>
-                  <p>{p.evidence}</p>
-                  <p>
-                    <strong>Why it matters:</strong> {p.impact}
+                  <p className="locked-note">
+                    🔒 Evidence and the exact fix are in the full report
                   </p>
                 </div>
               ))}
             </>
           )}
 
-          {ev.strengths.length > 0 && (
+          {free.strength && (
             <>
               <div className="section-label">What already works</div>
-              {ev.strengths.slice(0, 3).map((s, i) => (
-                <div className="strength" key={i}>
-                  {s}
-                </div>
-              ))}
+              <div className="strength">{free.strength}</div>
             </>
           )}
 
           <div className="upsell">
-            <h2>Make this repo agent-ready</h2>
+            <h2>Make {result.repo.split("/")[1]} agent-ready</h2>
             <ul>
-              <li>Full readiness assessment across all 5 dimensions</li>
-              <li>Every issue ranked by impact</li>
-              <li>Specific fixes with exact changes</li>
               <li>
-                Repository-specific AGENTS.md, generated for {result.repo}
+                Full readiness breakdown across all 5 dimensions, with reasons
               </li>
-              <li>Optional CLAUDE.md for Claude Code</li>
+              <li>
+                All {free.problemCount} findings with evidence, impact and the
+                exact fix
+              </li>
+              <li>Prioritized fix-first plan</li>
+              <li>Repository-specific AGENTS.md, generated for {result.repo}</li>
+              <li>CLAUDE.md for Claude Code, plus a print-ready PDF report</li>
             </ul>
             {result.stripeUrl ? (
-              <a
-                href={result.stripeUrl}
-                onClick={() => {
-                  try {
-                    sessionStorage.setItem("agentready:paid-repo", result.repo);
-                  } catch {}
-                }}
-              >
+              <a href={result.stripeUrl}>
                 <button className="primary">
                   Make my repo agent-ready · $49
                 </button>
@@ -177,8 +197,8 @@ export default function Home() {
       )}
 
       <p className="footer">
-        Agent Ready reads your repo through the GitHub API — no clone, no OAuth,
-        nothing stored.
+        Agent Ready reads your repo through the GitHub API — no clone, no
+        OAuth, nothing stored.
       </p>
     </main>
   );
