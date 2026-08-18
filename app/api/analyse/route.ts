@@ -4,16 +4,43 @@ import { evaluateRepo } from "@/lib/evaluator";
 
 export const maxDuration = 300;
 
+// The Astro landing page on getreadyforagents.com calls this API cross-origin.
+const ALLOWED_ORIGINS = new Set([
+  "https://www.getreadyforagents.com",
+  "https://getreadyforagents.com",
+  "http://localhost:4321",
+]);
+
+function corsHeaders(req: NextRequest): Record<string, string> {
+  const origin = req.headers.get("origin") ?? "";
+  if (!ALLOWED_ORIGINS.has(origin)) return {};
+  return {
+    "Access-Control-Allow-Origin": origin,
+    Vary: "Origin",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+  };
+}
+
+export async function OPTIONS(req: NextRequest) {
+  return new NextResponse(null, { status: 204, headers: corsHeaders(req) });
+}
+
 export async function POST(req: NextRequest) {
+  const cors = corsHeaders(req);
+  const json = (body: unknown, status = 200) =>
+    NextResponse.json(body, { status, headers: cors });
+
   let body: any;
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    return json({ error: "Invalid request" }, 400);
   }
   const repoInput = typeof body?.repo === "string" ? body.repo : "";
   if (!repoInput) {
-    return NextResponse.json({ error: "Missing repo" }, { status: 400 });
+    return json({ error: "Missing repo" }, 400);
   }
 
   try {
@@ -21,7 +48,7 @@ export async function POST(req: NextRequest) {
 
     // Ingestion-only mode for smoke testing without burning model tokens.
     if (body?.dryRun) {
-      return NextResponse.json({
+      return json({
         repo: `${data.owner}/${data.repo}`,
         found: data.found,
         missing: data.missing,
@@ -30,12 +57,12 @@ export async function POST(req: NextRequest) {
     }
 
     if (!process.env.ANTHROPIC_API_KEY) {
-      return NextResponse.json(
+      return json(
         {
           error:
             "Evaluation service not configured (missing ANTHROPIC_API_KEY)",
         },
-        { status: 500 }
+        500
       );
     }
 
@@ -45,7 +72,7 @@ export async function POST(req: NextRequest) {
 
     // Full report (the paid view fetches with full: true).
     if (body?.full) {
-      return NextResponse.json({ repo, evaluation, stripeUrl });
+      return json({ repo, evaluation, stripeUrl });
     }
 
     // Free teaser: score, verdict, summary, the single biggest problem
@@ -53,7 +80,7 @@ export async function POST(req: NextRequest) {
     // findings, fixes, breakdown reasons, and generated files never leave the
     // server on a free call.
     const [top, ...rest] = evaluation.problems;
-    return NextResponse.json({
+    return json({
       repo,
       free: {
         score: evaluation.score,
@@ -78,12 +105,9 @@ export async function POST(req: NextRequest) {
     });
   } catch (err: any) {
     if (err instanceof PublicError) {
-      return NextResponse.json({ error: err.message }, { status: 400 });
+      return json({ error: err.message }, 400);
     }
     console.error("analyse failed:", err);
-    return NextResponse.json(
-      { error: "Analysis failed. Please try again." },
-      { status: 500 }
-    );
+    return json({ error: "Analysis failed. Please try again." }, 500);
   }
 }
