@@ -156,7 +156,7 @@ export default function Home() {
                 }}
               >
                 <button className="primary">
-                  Make my repo agent-ready · $10
+                  Make my repo agent-ready · $49
                 </button>
               </a>
             ) : (

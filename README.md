@@ -1,6 +1,6 @@
 # AgentReady
 
-Paste a public GitHub repo → get an agent readiness score out of 100, the biggest problems with evidence from the actual repo, and (for $10) a full remediation report with a generated AGENTS.md.
+Paste a public GitHub repo → get an agent readiness score out of 100, the biggest problems with evidence from the actual repo, and (for $49) a full remediation report with a generated AGENTS.md.
 
 No accounts, no database, no OAuth, no cloning, no history.
 
@@ -9,7 +9,7 @@ No accounts, no database, no OAuth, no cloning, no history.
 - Next.js (one app: UI + `/api/analyse`)
 - GitHub REST API for repo structure + key files
 - Claude API (structured outputs, `claude-opus-5`) for the evaluation
-- Stripe Payment Link for the $10 report
+- Stripe Payment Link for the $49 report
 - Hosted on Render
 
 ## Run locally
