@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <main className="wrap">
       <div className="logo">
-        Agent<span>Ready</span>
+        Agent <span>Ready</span>
       </div>
 
       <h1>How well can coding agents work in your repo?</h1>
@@ -177,7 +177,7 @@ export default function Home() {
       )}
 
       <p className="footer">
-        AgentReady reads your repo through the GitHub API — no clone, no OAuth,
+        Agent Ready reads your repo through the GitHub API — no clone, no OAuth,
         nothing stored.
       </p>
     </main>

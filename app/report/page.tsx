@@ -95,7 +95,7 @@ function Report() {
   return (
     <main className="wrap">
       <div className="logo">
-        Agent<span>Ready</span>
+        Agent <span>Ready</span>
       </div>
       <p style={{ marginTop: 24 }}>
         <a className="back" href="/">

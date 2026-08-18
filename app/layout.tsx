@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AgentReady — how well can coding agents work in your repo?",
+  title: "Agent Ready — how well can coding agents work in your repo?",
   description:
     "Paste a public GitHub repo and get an agent readiness score, the biggest problems, and the exact changes to fix them.",
 };
