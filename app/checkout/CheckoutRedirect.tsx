@@ -16,7 +16,20 @@ export default function CheckoutRedirect({
     try {
       if (repo) sessionStorage.setItem("agentready:paid-repo", repo);
     } catch {}
-    if (stripeUrl) window.location.replace(stripeUrl);
+    if (stripeUrl) {
+      let target = stripeUrl;
+      if (repo) {
+        // Bind the repo to the Stripe session (base64url survives Stripe's
+        // client_reference_id charset rules); the report API decodes it after
+        // verifying the session is paid.
+        const ref = btoa(repo)
+          .replace(/\+/g, "-")
+          .replace(/\//g, "_")
+          .replace(/=+$/, "");
+        target += (target.includes("?") ? "&" : "?") + "client_reference_id=" + ref;
+      }
+      window.location.replace(target);
+    }
   }, [repo, stripeUrl]);
 
   return (

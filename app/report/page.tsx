@@ -46,6 +46,7 @@ function Report() {
   const [ev, setEv] = useState<Evaluation | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [paywalled, setPaywalled] = useState(false);
   const [reportDate, setReportDate] = useState("");
 
   useEffect(() => {
@@ -56,30 +57,47 @@ function Report() {
         year: "numeric",
       })
     );
+    const sessionId = params.get("session_id");
+    const accessKey = params.get("key");
     const fromQuery = params.get("repo");
     let target = fromQuery;
     try {
       if (!target) target = sessionStorage.getItem("agentready:paid-repo");
     } catch {}
 
-    if (!target) {
+    // With a paid session the server derives the repo from the session
+    // itself, so a missing local repo is only fatal without one.
+    if (!target && !sessionId) {
       setError("No repository specified. Run your repo on the homepage first.");
       setLoading(false);
       return;
     }
-    setRepo(target);
+    if (target) setRepo(target);
 
     fetch("/api/analyse", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ repo: target, full: true }),
+      body: JSON.stringify({
+        repo: target,
+        full: true,
+        sessionId,
+        accessKey,
+      }),
     })
       .then(async (res) => {
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Analysis failed");
+        if (!res.ok) {
+          const e: any = new Error(data.error || "Analysis failed");
+          e.paymentRequired = !!data.paymentRequired;
+          throw e;
+        }
+        setRepo(data.repo);
         setEv(data.evaluation);
       })
-      .catch((err) => setError(err.message))
+      .catch((err) => {
+        setError(err.message);
+        setPaywalled(!!err.paymentRequired);
+      })
       .finally(() => setLoading(false));
   }, [params]);
 
@@ -97,7 +115,18 @@ function Report() {
           complete evaluation takes 1–3 minutes.
         </p>
       )}
-      {error && <p className="error">{error}</p>}
+      {error && !paywalled && <p className="error">{error}</p>}
+      {error && paywalled && (
+        <div className="upsell">
+          <h2>This is the paid report</h2>
+          <p className="summary">{error}</p>
+          <a href="/">
+            <button className="primary" style={{ marginTop: 18 }}>
+              Get your free score first →
+            </button>
+          </a>
+        </div>
+      )}
 
       {ev && repo && (
         <article className="report">

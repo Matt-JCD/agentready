@@ -27,6 +27,68 @@ export async function OPTIONS(req: NextRequest) {
   return new NextResponse(null, { status: 204, headers: corsHeaders(req) });
 }
 
+type FullAuth =
+  | { ok: true; repo: string | null }
+  | { ok: false; error: string };
+
+// Full reports are gated: either the owner access key, or a Stripe Checkout
+// Session that is actually paid. When the session carries a
+// client_reference_id (set by /checkout), that repo is authoritative.
+async function authorizeFullReport(body: any): Promise<FullAuth> {
+  const accessKey = process.env.REPORT_ACCESS_KEY;
+  if (
+    accessKey &&
+    typeof body?.accessKey === "string" &&
+    body.accessKey === accessKey
+  ) {
+    return { ok: true, repo: null };
+  }
+
+  const sessionId = typeof body?.sessionId === "string" ? body.sessionId : "";
+  if (!sessionId) {
+    return {
+      ok: false,
+      error:
+        "The full report requires payment. Run your repo on the homepage and complete checkout to unlock it.",
+    };
+  }
+  const stripeKey = sessionId.startsWith("cs_test_")
+    ? process.env.STRIPE_SECRET_KEY_TEST || process.env.STRIPE_SECRET_KEY
+    : process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey) {
+    return { ok: false, error: "Payment verification is not configured" };
+  }
+
+  const res = await fetch(
+    `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`,
+    { headers: { Authorization: `Bearer ${stripeKey}` } }
+  );
+  if (!res.ok) {
+    return {
+      ok: false,
+      error:
+        "We couldn't verify this payment. If you did pay, reply to your Stripe receipt and we'll sort it out.",
+    };
+  }
+  const session = await res.json();
+  if (session.payment_status !== "paid") {
+    return {
+      ok: false,
+      error:
+        "This checkout wasn't completed. Finish payment to unlock the full report.",
+    };
+  }
+  let repo: string | null = null;
+  if (typeof session.client_reference_id === "string") {
+    try {
+      repo = Buffer.from(session.client_reference_id, "base64url").toString(
+        "utf8"
+      );
+    } catch {}
+  }
+  return { ok: true, repo };
+}
+
 export async function POST(req: NextRequest) {
   const cors = corsHeaders(req);
   const json = (body: unknown, status = 200) =>
@@ -38,7 +100,19 @@ export async function POST(req: NextRequest) {
   } catch {
     return json({ error: "Invalid request" }, 400);
   }
-  const repoInput = typeof body?.repo === "string" ? body.repo : "";
+  let repoInput = typeof body?.repo === "string" ? body.repo : "";
+
+  // Gate BEFORE any expensive work: a rejected full request must not fetch
+  // the repo or run the model.
+  if (body?.full) {
+    const auth = await authorizeFullReport(body);
+    if (!auth.ok) {
+      return json({ error: auth.error, paymentRequired: true }, 402);
+    }
+    // The repo bound to the paid session wins over whatever the client sent.
+    if (auth.repo) repoInput = auth.repo;
+  }
+
   if (!repoInput) {
     return json({ error: "Missing repo" }, 400);
   }

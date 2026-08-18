@@ -177,7 +177,7 @@ export default function Home() {
               <li>CLAUDE.md for Claude Code, plus a print-ready PDF report</li>
             </ul>
             {result.stripeUrl ? (
-              <a href={result.stripeUrl}>
+              <a href={`/checkout?repo=${encodeURIComponent(result.repo)}`}>
                 <button className="primary">
                   Make my repo agent-ready · $49
                 </button>
@@ -189,11 +189,8 @@ export default function Home() {
             )}
             <p className="fine">
               One-time payment. After checkout you land straight on your full
-              report. Already paid?{" "}
-              <a href={`/report?repo=${encodeURIComponent(result.repo)}`}>
-                View your report
-              </a>
-              .
+              report. Paid but lost the link? Reply to your Stripe receipt —
+              it reaches a human.
             </p>
           </div>
         </>
