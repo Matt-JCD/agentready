@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import Anthropic from "@anthropic-ai/sdk";
 import type { RepoData } from "./github";
 import { SYSTEM_PROMPT, buildUserPrompt, EVALUATION_SCHEMA } from "./prompt";
 
@@ -40,31 +40,48 @@ function verdictForScore(score: number): string {
   return "Not agent-ready";
 }
 
-export async function evaluateRepo(data: RepoData): Promise<Evaluation> {
-  const client = new OpenAI();
-  const model = process.env.OPENAI_MODEL || "gpt-5-mini";
+function clampDim(dim: Dimension): Dimension {
+  return { ...dim, score: Math.max(0, Math.min(20, Math.round(dim.score))) };
+}
 
-  const completion = await client.chat.completions.create({
+export async function evaluateRepo(data: RepoData): Promise<Evaluation> {
+  const client = new Anthropic();
+  const model = process.env.ANTHROPIC_MODEL || "claude-opus-5";
+
+  const stream = client.messages.stream({
     model,
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: buildUserPrompt(data) },
-    ],
-    response_format: {
-      type: "json_schema",
-      json_schema: {
-        name: "agent_readiness_evaluation",
-        strict: true,
+    max_tokens: 32000,
+    system: SYSTEM_PROMPT,
+    output_config: {
+      format: {
+        type: "json_schema",
         schema: EVALUATION_SCHEMA as any,
       },
     },
+    messages: [{ role: "user", content: buildUserPrompt(data) }],
   });
+  const response = await stream.finalMessage();
 
-  const raw = completion.choices[0]?.message?.content;
-  if (!raw) throw new Error("Model returned no content");
-  const parsed = JSON.parse(raw);
+  if (response.stop_reason === "refusal") {
+    throw new Error("Evaluation was declined by the model");
+  }
+  if (response.stop_reason === "max_tokens") {
+    throw new Error("Evaluation output was truncated");
+  }
 
-  const dims = parsed.dimensions;
+  const textBlock = response.content.find(
+    (b): b is Anthropic.TextBlock => b.type === "text"
+  );
+  if (!textBlock) throw new Error("Model returned no content");
+  const parsed = JSON.parse(textBlock.text);
+
+  const dims = {
+    setup: clampDim(parsed.dimensions.setup),
+    testing: clampDim(parsed.dimensions.testing),
+    architecture: clampDim(parsed.dimensions.architecture),
+    instructions: clampDim(parsed.dimensions.instructions),
+    tooling: clampDim(parsed.dimensions.tooling),
+  };
   const score =
     dims.setup.score +
     dims.testing.score +
@@ -74,6 +91,7 @@ export async function evaluateRepo(data: RepoData): Promise<Evaluation> {
 
   return {
     ...parsed,
+    dimensions: dims,
     score,
     verdict: verdictForScore(score),
   };

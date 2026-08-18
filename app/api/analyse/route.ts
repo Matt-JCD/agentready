@@ -29,9 +29,12 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    if (!process.env.OPENAI_API_KEY) {
+    if (!process.env.ANTHROPIC_API_KEY) {
       return NextResponse.json(
-        { error: "Evaluation service not configured (missing OPENAI_API_KEY)" },
+        {
+          error:
+            "Evaluation service not configured (missing ANTHROPIC_API_KEY)",
+        },
         { status: 500 }
       );
     }

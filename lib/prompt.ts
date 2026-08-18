@@ -66,12 +66,14 @@ export function buildUserPrompt(data: RepoData): string {
   return parts.join("\n");
 }
 
-// Strict structured-output schema for the evaluation.
+// Structured-output schema for the evaluation.
+// Note: numeric min/max constraints aren't supported by the API's structured
+// outputs — the 0-20 range is enforced in the prompt and clamped server-side.
 const dimension = {
   type: "object",
   additionalProperties: false,
   properties: {
-    score: { type: "integer", minimum: 0, maximum: 20 },
+    score: { type: "integer" },
     reason: { type: "string" },
   },
   required: ["score", "reason"],

@@ -8,7 +8,7 @@ No accounts, no database, no OAuth, no cloning, no history.
 
 - Next.js (one app: UI + `/api/analyse`)
 - GitHub REST API for repo structure + key files
-- OpenAI structured output for the evaluation
+- Claude API (structured outputs, `claude-opus-5`) for the evaluation
 - Stripe Payment Link for the $10 report
 - Hosted on Render
 
@@ -16,7 +16,7 @@ No accounts, no database, no OAuth, no cloning, no history.
 
 ```
 npm install
-cp .env.example .env.local   # fill in OPENAI_API_KEY (and optionally GITHUB_TOKEN)
+cp .env.example .env.local   # fill in ANTHROPIC_API_KEY (and optionally GITHUB_TOKEN)
 npm run dev
 ```
 
@@ -24,9 +24,9 @@ npm run dev
 
 - Build command: `npm install && npm run build`
 - Start command: `npm start`
-- Env vars: `OPENAI_API_KEY`, `GITHUB_TOKEN`, `STRIPE_PAYMENT_URL`
+- Env vars: `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `STRIPE_PAYMENT_URL`
 
-## Smoke test without an OpenAI key
+## Smoke test without an API key
 
 ```
 curl -X POST localhost:3000/api/analyse -H "Content-Type: application/json" -d '{"repo":"vercel/next.js","dryRun":true}'
