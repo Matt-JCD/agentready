@@ -15,6 +15,12 @@ export interface Problem {
   fix: string;
 }
 
+export interface TaskSimulation {
+  task: string;
+  outcome: "succeeds" | "struggles" | "fails";
+  narrative: string;
+}
+
 export interface Evaluation {
   score: number;
   verdict: string;
@@ -29,6 +35,8 @@ export interface Evaluation {
   problems: Problem[];
   strengths: string[];
   recommendations: { title: string; detail: string }[];
+  task_simulations: TaskSimulation[];
+  projected_score: number;
   agents_md: string;
   claude_md: string;
 }
@@ -44,15 +52,20 @@ function clampDim(dim: Dimension): Dimension {
   return { ...dim, score: Math.max(0, Math.min(20, Math.round(dim.score))) };
 }
 
-export async function evaluateRepo(data: RepoData): Promise<Evaluation> {
+export async function evaluateRepo(
+  data: RepoData,
+  opts: { deep?: boolean } = {}
+): Promise<Evaluation> {
   const client = new Anthropic();
   const model = process.env.ANTHROPIC_MODEL || "claude-opus-5";
 
+  // Paid reports get the deepest reasoning; free scores stay at the default.
   const stream = client.messages.stream({
     model,
-    max_tokens: 32000,
+    max_tokens: opts.deep ? 48000 : 32000,
     system: SYSTEM_PROMPT,
     output_config: {
+      effort: opts.deep ? "xhigh" : "high",
       format: {
         type: "json_schema",
         schema: EVALUATION_SCHEMA as any,
@@ -89,10 +102,16 @@ export async function evaluateRepo(data: RepoData): Promise<Evaluation> {
     dims.instructions.score +
     dims.tooling.score;
 
+  const projected = Math.max(
+    score,
+    Math.min(100, Math.round(parsed.projected_score ?? score))
+  );
+
   return {
     ...parsed,
     dimensions: dims,
     score,
+    projected_score: projected,
     verdict: verdictForScore(score),
   };
 }

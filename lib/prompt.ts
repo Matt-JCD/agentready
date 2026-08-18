@@ -23,7 +23,11 @@ A sparse repo with no README should land under 30 total. An exemplary repo with 
 
 EVIDENCE RULE (critical): Do not give generic software development advice. Every finding must be supported by evidence from the supplied repository contents, or by the explicit absence of expected information. Name the actual files, scripts, and commands you saw. Bad: "Consider adding tests." Good: "package.json defines test:unit and test:integration, but neither README.md nor CONTRIBUTING.md says which must pass before a change is complete."
 
-Problems: report the issues that most reduce agent effectiveness, ordered by severity (high | medium | low). Each needs concrete evidence, the impact on a coding agent, and a specific fix.
+Problems: report the issues that most reduce agent effectiveness, ordered by severity (high | medium | low). Each needs concrete evidence, the impact on a coding agent, and a specific fix. Write like a staff engineer who actually read this repository — name files, scripts, targets and commands exactly as they appear. A finding that could be pasted into a different repo's report unchanged is a failed finding.
+
+task_simulations: simulate exactly 3 realistic tasks a coding agent would be given in THIS repository (pick tasks that fit what the repo actually is — e.g. "fix a bug in <real file>", "add a test for <real behavior>", "add a small feature to <real module>"). For each, walk through what the agent would do step by step and identify the exact point where it succeeds, has to guess, or gets stuck — grounded in what the supplied contents do and don't say. outcome is one of: "succeeds" | "struggles" | "fails". The narrative must reference real paths and commands.
+
+projected_score: the total score (0-100) this repository would plausibly reach if the recommendations were implemented. Be realistic — implementing documentation fixes cannot make a repo with no tests score 20/20 on testing.
 
 Strengths: things the repo already does well for agents, with evidence. Empty array if none.
 
@@ -125,6 +129,23 @@ export const EVALUATION_SCHEMA = {
         required: ["title", "detail"],
       },
     },
+    task_simulations: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          task: { type: "string" },
+          outcome: {
+            type: "string",
+            enum: ["succeeds", "struggles", "fails"],
+          },
+          narrative: { type: "string" },
+        },
+        required: ["task", "outcome", "narrative"],
+      },
+    },
+    projected_score: { type: "integer" },
     agents_md: { type: "string" },
     claude_md: { type: "string" },
   },
@@ -135,6 +156,8 @@ export const EVALUATION_SCHEMA = {
     "problems",
     "strengths",
     "recommendations",
+    "task_simulations",
+    "projected_score",
     "agents_md",
     "claude_md",
   ],

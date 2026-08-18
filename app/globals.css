@@ -158,6 +158,41 @@ button.primary:disabled {
   box-shadow: none;
 }
 
+/* Private repo token disclosure */
+.private-repo {
+  margin-top: 14px;
+  max-width: 640px;
+}
+.private-repo summary {
+  font-size: 13.5px;
+  color: var(--t3);
+  cursor: pointer;
+  width: fit-content;
+}
+.private-repo summary:hover {
+  color: var(--t1);
+}
+.private-repo p {
+  font-size: 13px;
+  color: var(--t3);
+  line-height: 1.55;
+  margin: 10px 0;
+}
+.private-repo input {
+  width: 100%;
+  background: var(--glass);
+  border: 1px solid var(--line2);
+  border-radius: 10px;
+  padding: 11px 13px;
+  font-size: 13.5px;
+  color: var(--t1);
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+}
+.private-repo input:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
 .error {
   margin-top: 16px;
   color: var(--red);

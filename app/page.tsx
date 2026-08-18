@@ -15,6 +15,7 @@ interface FreeReport {
   lockedProblems: { severity: string; title: string }[];
   strength: string | null;
   problemCount: number;
+  projectedScore: number;
 }
 
 function verdictClass(score: number) {
@@ -31,6 +32,7 @@ const severityIcon: Record<string, string> = {
 
 export default function Home() {
   const [repo, setRepo] = useState("");
+  const [githubToken, setGithubToken] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<{
@@ -49,13 +51,18 @@ export default function Home() {
       const res = await fetch("/api/analyse", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ repo }),
+        body: JSON.stringify({ repo, githubToken: githubToken || undefined }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Analysis failed");
       setResult(data);
       try {
         sessionStorage.setItem("agentready:paid-repo", data.repo);
+        // Session-scoped only: lets the paid report re-read a private repo
+        // in this browser without asking for the token again.
+        if (githubToken) {
+          sessionStorage.setItem("agentready:gh-token", githubToken);
+        }
       } catch {}
     } catch (err: any) {
       setError(err.message);
@@ -94,6 +101,22 @@ export default function Home() {
           {loading ? "Analysing…" : "Check my repo"}
         </button>
       </form>
+
+      <details className="private-repo">
+        <summary>Private repo?</summary>
+        <p>
+          Paste a fine-grained GitHub token with read-only access to just this
+          repository. It&apos;s used for this one analysis and never stored.
+        </p>
+        <input
+          type="password"
+          placeholder="github_pat_…"
+          value={githubToken}
+          onChange={(e) => setGithubToken(e.target.value)}
+          spellCheck={false}
+          autoComplete="off"
+        />
+      </details>
 
       {error && <p className="error">{error}</p>}
 
@@ -164,6 +187,13 @@ export default function Home() {
 
           <div className="upsell">
             <h2>Make {result.repo.split("/")[1]} agent-ready</h2>
+            {free.projectedScore > free.score && (
+              <p className="summary">
+                Implementing the fix plan takes {result.repo.split("/")[1]}{" "}
+                from <strong>{free.score}</strong> to about{" "}
+                <strong>{free.projectedScore}/100</strong>.
+              </p>
+            )}
             <ul>
               <li>
                 Full readiness breakdown across all 5 dimensions, with reasons

@@ -117,8 +117,15 @@ export async function POST(req: NextRequest) {
     return json({ error: "Missing repo" }, 400);
   }
 
+  // Optional read-only token for private repos: used for this analysis's
+  // GitHub calls only — never stored, never logged.
+  const githubToken =
+    typeof body?.githubToken === "string" && body.githubToken.trim()
+      ? body.githubToken.trim()
+      : undefined;
+
   try {
-    const data = await fetchRepoData(repoInput);
+    const data = await fetchRepoData(repoInput, githubToken);
 
     // Ingestion-only mode for smoke testing without burning model tokens.
     if (body?.dryRun) {
@@ -140,7 +147,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const evaluation = await evaluateRepo(data);
+    const evaluation = await evaluateRepo(data, { deep: !!body?.full });
     const repo = `${data.owner}/${data.repo}`;
     const stripeUrl = process.env.STRIPE_PAYMENT_URL || null;
 
@@ -174,6 +181,7 @@ export async function POST(req: NextRequest) {
         })),
         strength: evaluation.strengths[0] ?? null,
         problemCount: evaluation.problems.length,
+        projectedScore: evaluation.projected_score,
       },
       stripeUrl,
     });
