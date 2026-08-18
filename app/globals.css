@@ -30,71 +30,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ============ Header (mirrors the GRFA nav) ============ */
-.site-head {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  height: 58px;
-  background: rgba(9, 9, 11, 0.85);
-  backdrop-filter: blur(16px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-.head-inner {
-  max-width: 1160px;
-  margin: 0 auto;
-  height: 100%;
-  padding: 0 clamp(20px, 3vw, 40px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.head-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-.byline {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  font-size: 11px;
-  font-weight: 500;
-  color: #8a8a92;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  text-decoration: none;
-  padding-left: 12px;
-  border-left: 1px solid rgba(255, 255, 255, 0.14);
-  transition: color 0.15s;
-}
-.byline:hover {
-  color: #e4e4e7;
-}
-.head-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.head-links a {
-  font-size: 13px;
-  color: #a1a1aa;
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: color 0.15s;
-}
-.head-links a:hover {
-  color: #fafafa;
-}
-@media (max-width: 640px) {
-  .head-links a:not(:last-child) {
-    display: none;
-  }
-}
+/* The header and footer are verbatim ports of the getreadyforagents.com
+   components — see app/components/GrfaNav.tsx and GrfaFooter.tsx (styles in
+   grfa-nav.css / grfa-footer.css, copied from the site). */
 
 /* Wordmark: lowercase geometric sans, white + brand teal — same language as
    the getreadyforagents logo. */
@@ -487,60 +425,6 @@ a.back:hover {
   color: var(--t1);
 }
 
-/* ============ Footer (compact GRFA-style) ============ */
-.site-foot {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: #0e0e11;
-  padding: 56px clamp(20px, 3vw, 40px) 32px;
-}
-.foot-inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  gap: 40px;
-}
-.foot-brand p {
-  margin-top: 12px;
-  font-size: 13.5px;
-  color: #8a8a92;
-  line-height: 1.6;
-  max-width: 340px;
-}
-.foot-col h2 {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #8a8a92;
-  margin-bottom: 12px;
-}
-.foot-col a {
-  display: block;
-  font-size: 14px;
-  color: #a1a1aa;
-  text-decoration: none;
-  padding: 4px 0;
-  transition: color 0.15s;
-}
-.foot-col a:hover {
-  color: #fafafa;
-}
-.foot-bottom {
-  max-width: 1120px;
-  margin: 40px auto 0;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 12.5px;
-  color: #8a8a92;
-}
-@media (max-width: 720px) {
-  .foot-inner {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-}
-
 /* ============ Locked findings (free teaser) ============ */
 .problem.locked h3 {
   color: var(--t2);
@@ -618,8 +502,8 @@ a.back:hover {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .site-head,
-  .site-foot,
+  nav[data-site-header],
+  .grfa-footer,
   .no-print {
     display: none !important;
   }

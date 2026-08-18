@@ -68,6 +68,9 @@ export default function Home() {
 
   return (
     <main className="wrap">
+      <div className="logo" style={{ marginBottom: 20 }}>
+        agent <span>ready</span>
+      </div>
       <p className="eyebrow">
         <span className="spark"></span>Free agent readiness score
       </p>

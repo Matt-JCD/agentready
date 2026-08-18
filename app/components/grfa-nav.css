@@ -1,0 +1,138 @@
+﻿/* Verbatim copy of the <style> block in Nav.astro (Matt-JCD/agentic-ready).
+   Keep in sync with the site header. */
+
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,3vw,40px);background:rgba(9,9,11,.85);backdrop-filter:blur(16px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-brand-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:0}
+  .nav-brand{display:flex;align-items:center;flex-shrink:0}
+  nav img{display:block;width:auto;max-width:100%;height:16px}
+  .nav-byline{display:inline-flex;align-items:center;min-height:24px;font-size:11px;font-weight:500;color:#8a8a92;letter-spacing:.02em;white-space:nowrap;text-decoration:none;line-height:1;padding-left:14px;border-left:1px solid rgba(255,255,255,.14);transition:color .15s}
+  .nav-byline:hover{color:#e4e4e7}
+  .nav-r{display:flex;align-items:center;justify-content:flex-end;gap:clamp(14px,1.6vw,24px);min-width:0}
+  .nav-r>*{flex-shrink:0}
+  .nav-r a{font-size:14px;color:#a1a1aa;text-decoration:none;transition:color .15s;letter-spacing:-.01em}
+  /* All inline bar links center their text so they sit on the same line as the
+     dropdown triggers (>=24px tap target for WCAG 2.5.8). */
+  .nav-r>a:not(.nav-btn){display:inline-flex;align-items:center;min-height:24px}
+  .nav-r a:hover{color:#fafafa}
+  .nav-btn{font-size:14px;font-weight:500;color:#09090b!important;background:#fafafa;padding:8px 18px;border-radius:8px;transition:all .2s}
+  .nav-btn:hover{opacity:.9;box-shadow:0 0 16px rgba(62,207,180,.25)}
+  .nav-r .nav-ph{display:inline-flex;align-items:center;gap:7px;font-size:13px!important;font-weight:700;color:#fafafa!important;background:rgba(218,85,47,.12);border:1px solid rgba(218,85,47,.42);padding:6px 12px;border-radius:8px;transition:all .2s;white-space:nowrap;line-height:1}
+  .nav-r .nav-ph img{width:18px!important;height:18px!important;max-width:18px!important;display:block;flex:0 0 18px}
+  .nav-r .nav-ph:hover{border-color:rgba(218,85,47,.82);background:rgba(218,85,47,.20);box-shadow:0 0 16px rgba(218,85,47,.18)}
+
+  /* Search input â€” a typeable box that GET-submits to /search */
+  .nav-search{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 11px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:8px;flex:0 0 auto;transition:border-color .15s,background .15s}
+  .nav-search:focus-within{border-color:rgba(147,209,189,.55);background:rgba(255,255,255,.09)}
+  .nav-search-ico{width:14px;height:14px;color:#8a8a92;flex:0 0 auto}
+  .nav-search input{width:108px;min-width:0;background:none;border:none;outline:none;color:#fafafa;font-size:13px;font-family:inherit;padding:0}
+  .nav-search input::placeholder{color:#8a8a92}
+  .nav-search input::-webkit-search-cancel-button{-webkit-appearance:none}
+
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+  .hamburger span{display:block;width:20px;height:1.5px;background:#a1a1aa;border-radius:1px;transition:all .2s}
+
+  .nav-divider{width:1px;height:18px;background:rgba(255,255,255,.12);flex-shrink:0}
+  .nav-dropdown{position:relative}
+  .nav-dropdown-link-row{display:inline-flex;align-items:center;gap:7px;flex-wrap:nowrap;white-space:nowrap}
+  .nav-dropdown-link{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap}
+  .nav-dropdown-trigger{font-size:14px;color:#a1a1aa;background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:0;min-height:24px;letter-spacing:-.01em;transition:color .15s;font-family:inherit}
+  .nav-dropdown-trigger-icon{display:inline-flex;align-items:center;justify-content:center;gap:0;flex:0 0 auto;line-height:1}
+  .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{color:#fafafa}
+  .nav-dropdown-trigger svg{transition:transform .2s}
+  .nav-dropdown.open .nav-dropdown-trigger svg{transform:rotate(180deg)}
+  .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 14px);right:0;width:max-content;min-width:240px;max-width:min(320px,calc(100vw - 32px));max-height:calc(100vh - 84px);overflow-y:auto;background:rgba(14,14,17,.98);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 0;box-shadow:0 18px 40px rgba(0,0,0,.38);transform:translateX(var(--dropdown-shift,0px))}
+  .nav-dropdown-menu[hidden]{display:none!important}
+  .nav-dropdown.open .nav-dropdown-menu{display:block}
+  .nav-dropdown-menu a,.flyout-cat,.flyout-panel a{font-size:14px;color:#a1a1aa;text-decoration:none;letter-spacing:-.01em;transition:all .15s;display:block;padding:9px 17px;white-space:normal;overflow-wrap:anywhere;line-height:1.4}
+  .nav-dropdown-menu a:hover,.flyout-cat:hover,.flyout-panel a:hover{color:#fafafa;background:rgba(255,255,255,.04)}
+  .dropdown-divider{height:1px;background:rgba(255,255,255,.06);margin:6px 16px}
+  .view-all-link{font-size:13px!important;color:var(--accent-teal)!important;font-weight:500;letter-spacing:0}
+  .dropdown-label{display:block;padding:7px 17px 5px;font-size:12px;color:#8a8a92;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+
+  /* Products, Learn and Agent Indices sit mid-bar; open their menus
+     left-aligned under the trigger. */
+  [data-dropdown="products"] .nav-dropdown-menu,
+  [data-dropdown="learn"] .nav-dropdown-menu,
+  [data-dropdown="indices"] .nav-dropdown-menu{left:0;right:auto}
+  .nav-dropdown-menu--flyout{display:none;right:auto;left:0;width:min(560px,calc(100vw - 32px));max-width:calc(100vw - 32px);overflow:visible;grid-template-columns:minmax(210px,228px) minmax(0,1fr)}
+  .nav-dropdown.open .nav-dropdown-menu--flyout{display:grid}
+  .flyout-categories,.flyout-panels{min-width:0;padding:0;background:none;backdrop-filter:none;border:none;border-radius:0;box-shadow:none}
+  .flyout-categories{padding-right:10px}
+  .flyout-categories.has-panel{border-right:1px solid rgba(255,255,255,.08)}
+  .flyout-cat{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;white-space:normal;overflow-wrap:anywhere;line-height:1.35}
+  .flyout-cat--solo{margin-top:4px;border-top:1px solid rgba(255,255,255,.06);padding-top:13px}
+  .flyout-cat svg{flex-shrink:0;opacity:.4;transition:opacity .15s;margin-top:4px}
+  .flyout-cat:hover svg,.flyout-cat.flyout-active svg{opacity:1}
+  .flyout-panels{display:none;min-width:0;padding-left:10px}
+  .flyout-panels.flyout-visible{display:block}
+  .flyout-panel{display:none}
+  .flyout-panel.flyout-visible{display:block}
+
+  /* Compact sizing for the inline bar (13px text, tight gaps). Runs right down
+     to the hamburger breakpoint below, so whenever the inline bar is shown it's
+     shown at this compact size. */
+  @media(max-width:1920px){
+    nav{padding:0 18px}
+    .nav-r{gap:13px}
+    .nav-r a,.nav-dropdown-trigger,.nav-btn{font-size:13px}
+    .nav-btn{padding:6px 14px}
+    .nav-r .nav-ph{padding:5px 10px;font-size:12.5px!important}
+    .nav-r .nav-ph img{width:16px!important;height:16px!important;max-width:16px!important;flex-basis:16px}
+    .nav-search{height:30px}
+    .nav-search input{width:96px;font-size:13px}
+  }
+  /* Mid widths: the Product Hunt pill drops its label and keeps the icon. */
+  @media(max-width:1600px) and (min-width:1281px){
+    .nav-r .nav-ph span{display:none}
+    .nav-r .nav-ph{padding:6px 8px}
+  }
+  /* Collapse to the hamburger before the inline links would overflow the brand.
+     With two inline links + Products + Agent Indices + Learn + Resources +
+     search + icon pill + button the row needs ~1150px; anything narrower gets
+     the mobile menu instead of a broken row. */
+  @media(max-width:1280px){
+    nav{padding:0 16px}
+    .hamburger{display:flex}
+    .nav-byline{display:inline-flex}
+    .nav-r{display:none;position:fixed;top:58px;left:0;right:0;flex-direction:column;background:rgba(9,9,11,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);padding:18px 20px;gap:0;max-height:calc(100vh - 58px);overflow-y:auto}
+    .nav-r.open{display:flex}
+    .nav-r>a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06);width:100%;font-size:16px}
+    .nav-r>a:last-child{border-bottom:none}
+    .nav-btn{margin-top:10px;text-align:center;display:block;padding:12px 18px}
+    .nav-r .nav-ph{justify-content:center;margin-top:10px;padding:11px 18px!important;border-radius:8px}
+    .nav-divider{display:none}
+    .nav-search{order:99;width:100%;height:42px;margin:12px 0 2px;padding:0 14px}
+    .nav-search input{width:auto;flex:1;font-size:15px}
+    .nav-dropdown{width:100%;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-dropdown-link-row{display:flex;align-items:center;justify-content:space-between}
+    .nav-dropdown-link-row .nav-dropdown-link{padding:13px 0;flex:1;font-size:16px}
+    .nav-dropdown-link-row .nav-dropdown-trigger{width:auto;padding:13px 0 13px 12px;justify-content:center;flex:none}
+    .nav-dropdown-trigger{width:100%;padding:13px 0;font-size:16px;justify-content:space-between}
+    .nav-dropdown-menu{position:static;transform:none;min-width:0;background:transparent;backdrop-filter:none;border:none;border-radius:0;padding:0 0 8px 12px;box-shadow:none}
+    .nav-dropdown-menu a{padding:10px 0;font-size:15px}
+    .nav-dropdown-menu--flyout{display:none;min-width:0;grid-template-columns:none;padding:0 0 8px 12px!important}
+    .nav-dropdown.open .nav-dropdown-menu--flyout{display:block!important}
+    .flyout-categories{min-width:0;border-right:none;padding:0}
+    .flyout-categories.has-panel{border-right:none}
+    .flyout-cat{padding:10px 0;font-size:15px}
+    .flyout-cat--solo{border-top:none;padding-top:10px;margin-top:0}
+    .flyout-cat svg{transform:rotate(90deg);transition:transform .2s}
+    .flyout-cat.flyout-active svg{transform:rotate(-90deg)}
+    .flyout-panels{min-width:0;padding:0 0 0 16px;display:block!important}
+    .flyout-panel{display:none}
+    .flyout-panel.flyout-visible{display:block}
+    .flyout-panel a{padding:8px 0;font-size:14px}
+  }
+
+  /* Uniform control row (desktop bar only â€” must sit after the width-based
+     overrides above so it wins the cascade): every item â€” links, dropdown
+     triggers, search, the PH pill and the CTA button â€” shares the same 32px
+     box, so text centres on one line instead of hanging off mixed heights. */
+  @media(min-width:1281px){
+    .nav-r>a:not(.nav-btn):not(.nav-ph),
+    .nav-dropdown-trigger{height:32px;min-height:0;line-height:1}
+    .nav-r .nav-ph{height:32px;padding-top:0;padding-bottom:0;box-sizing:border-box;line-height:1}
+    .nav-btn{height:32px;display:inline-flex;align-items:center;padding-top:0;padding-bottom:0;box-sizing:border-box;line-height:1}
+    .nav-search{height:32px}
+  }
+
