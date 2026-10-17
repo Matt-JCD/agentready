@@ -1,0 +1,60 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+}
+
+const {
+  title,
+  description,
+  keywords = 'agent ready, agent readiness score, AGENTS.md generator, CLAUDE.md, coding agents, Claude Code, repo readiness',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  {keywords && <meta name="keywords" content={keywords}>}
+  <link rel="canonical" href={canonical}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Agent Ready">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:locale" content="en_AU">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@prefactorai">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Nav />
+  <slot />
+  <Footer />
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('[data-site-header]')?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>

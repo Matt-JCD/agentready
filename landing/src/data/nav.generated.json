@@ -1,0 +1,1718 @@
+{
+ "_provenance": {
+  "generated_at": "2026-06-13",
+  "source": "pillar factory v1.3 queues + claimed_targets.json + DataForSEO kw_data_google_ads_search_volume",
+  "note": "All content sections live. Compare and guides nav items ordered by DataForSEO search volume (US, Jun 2026)."
+ },
+ "library": {
+  "pillars": [
+   {
+    "slug": "agentic-ai",
+    "name": "Agentic AI",
+    "hub": "/agentic-ai",
+    "pages": [
+     {
+      "title": "Agentic AI vs generative AI",
+      "href": "/compare/agentic-ai-vs-generative-ai",
+      "target": "compare/agentic-ai-vs-generative-ai",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Agentic AI vs AI agents",
+      "href": "/compare/agentic-ai-vs-ai-agents",
+      "target": "compare/agentic-ai-vs-ai-agents",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Agentic AI vs traditional automation",
+      "href": "/compare/agentic-ai-vs-traditional-automation",
+      "target": "compare/agentic-ai-vs-traditional-automation",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Agentic AI architecture: the loop and its parts",
+      "href": "/learn/agentic-ai-architecture",
+      "target": "learn/agentic-ai-architecture",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Agentic AI frameworks: the landscape and how to choose",
+      "href": "/learn/agentic-ai-frameworks",
+      "target": "learn/agentic-ai-frameworks",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Agentic AI examples: where the loop does real work",
+      "href": "/learn/agentic-ai-examples",
+      "target": "learn/agentic-ai-examples",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Autonomous AI agents: what autonomy actually means",
+      "href": "/learn/autonomous-ai-agents",
+      "target": "learn/autonomous-ai-agents",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Multi-agent systems: when one agent becomes several",
+      "href": "/learn/multi-agent-systems",
+      "target": "learn/multi-agent-systems",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "ai-agents",
+    "name": "AI Agents",
+    "hub": "/ai-agents",
+    "pages": [
+     {
+      "title": "Agentic AI vs AI agents",
+      "href": "/compare/agentic-ai-vs-ai-agents",
+      "target": "compare/agentic-ai-vs-ai-agents",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "AI agents vs chatbots",
+      "href": "/compare/ai-agents-vs-chatbots",
+      "target": "compare/ai-agents-vs-chatbots",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "AI agents use cases",
+      "href": "/learn/ai-agents-use-cases",
+      "target": "learn/ai-agents-use-cases",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is an AI agent workflow?",
+      "href": "/learn/ai-agents-workflow",
+      "target": "learn/ai-agents-workflow",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "How do AI agents work?",
+      "href": "/learn/how-do-ai-agents-work",
+      "target": "learn/how-do-ai-agents-work",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is an AI agents framework?",
+      "href": "/learn/ai-agents-framework",
+      "target": "learn/ai-agents-framework",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI agents for automation",
+      "href": "/learn/ai-agents-for-automation",
+      "target": "learn/ai-agents-for-automation",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI agents for customer service",
+      "href": "/learn/ai-agents-for-customer-service",
+      "target": "learn/ai-agents-for-customer-service",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "ai-governance",
+    "name": "AI Governance",
+    "hub": "/ai-governance",
+    "pages": [
+     {
+      "title": "Runtime governance vs pre-deployment review",
+      "href": "/compare/runtime-governance-vs-pre-deployment-review",
+      "target": "compare/runtime-governance-vs-pre-deployment-review",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "AI governance best practices that operate, not decorate",
+      "href": "/learn/ai-governance-best-practices",
+      "target": "learn/ai-governance-best-practices",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is AI governance?",
+      "href": "/learn/ai-governance",
+      "target": "learn/ai-governance",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is an AI governance framework?",
+      "href": "/learn/ai-governance-framework",
+      "target": "learn/ai-governance-framework",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is an AI governance policy?",
+      "href": "/learn/ai-governance-policy",
+      "target": "learn/ai-governance-policy",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI governance principles",
+      "href": "/learn/ai-governance-principles",
+      "target": "learn/ai-governance-principles",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI ethics and governance",
+      "href": "/learn/ai-ethics-and-governance",
+      "target": "learn/ai-ethics-and-governance",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is AI agent governance?",
+      "href": "/learn/ai-agent-governance",
+      "target": "learn/ai-agent-governance",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "ai-security",
+    "name": "AI Security",
+    "hub": "/ai-security",
+    "pages": [
+     {
+      "title": "AI security risks: a working taxonomy",
+      "href": "/learn/ai-security-risks",
+      "target": "learn/ai-security-risks",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI in cybersecurity: what it does, and what it doesn't",
+      "href": "/learn/ai-in-cybersecurity",
+      "target": "learn/ai-in-cybersecurity",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Will AI replace cybersecurity jobs?",
+      "href": "/learn/will-ai-replace-cybersecurity",
+      "target": "learn/will-ai-replace-cybersecurity",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI security",
+      "href": "/learn/ai-security",
+      "target": "learn/ai-security",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI security best practices",
+      "href": "/learn/ai-security-best-practices",
+      "target": "learn/ai-security-best-practices",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Enterprise AI security",
+      "href": "/learn/enterprise-ai-security",
+      "target": "learn/enterprise-ai-security",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI-Powered Cybersecurity Threats",
+      "href": "/learn/ai-cyber-security-threats",
+      "target": "learn/ai-cyber-security-threats",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "crewai",
+    "name": "CrewAI",
+    "hub": "/crewai",
+    "pages": [
+     {
+      "title": "CrewAI vs LangGraph",
+      "href": "/compare/langgraph-vs-crewai",
+      "target": "compare/langgraph-vs-crewai",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "CrewAI agents",
+      "href": "/learn/crewai-agents",
+      "target": "learn/crewai-agents",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "CrewAI framework",
+      "href": "/learn/crewai-framework",
+      "target": "learn/crewai-framework",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "CrewAI memory",
+      "href": "/learn/crewai-memory",
+      "target": "learn/crewai-memory",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "CrewAI use cases",
+      "href": "/learn/crewai-use-cases",
+      "target": "learn/crewai-use-cases",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "generative-ai",
+    "name": "Generative AI",
+    "hub": "/generative-ai",
+    "pages": [
+     {
+      "title": "Agentic AI vs generative AI",
+      "href": "/compare/agentic-ai-vs-generative-ai",
+      "target": "compare/agentic-ai-vs-generative-ai",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Generative AI models",
+      "href": "/learn/generative-ai-models",
+      "target": "learn/generative-ai-models",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Generative AI use cases",
+      "href": "/learn/generative-ai-use-cases",
+      "target": "learn/generative-ai-use-cases",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is generative AI?",
+      "href": "/learn/what-is-generative-ai",
+      "target": "learn/what-is-generative-ai",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "How does generative AI work?",
+      "href": "/learn/how-does-generative-ai-work",
+      "target": "learn/how-does-generative-ai-work",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Generative AI Video Models",
+      "href": "/learn/generative-ai-video-models",
+      "target": "learn/generative-ai-video-models",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "langchain",
+    "name": "LangChain",
+    "hub": "/langchain",
+    "pages": [
+     {
+      "title": "LangChain vs LangGraph",
+      "href": "/compare/langchain-vs-langgraph",
+      "target": "compare/langchain-vs-langgraph",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "LangChain agents",
+      "href": "/learn/langchain-agents",
+      "target": "learn/langchain-agents",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "LangChain memory",
+      "href": "/learn/langchain-memory",
+      "target": "learn/langchain-memory",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "What is LangChain?",
+      "href": "/learn/what-is-langchain",
+      "target": "learn/what-is-langchain",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "LangChain tools",
+      "href": "/learn/langchain-tools",
+      "target": "learn/langchain-tools",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "langgraph",
+    "name": "LangGraph",
+    "hub": "/langgraph",
+    "pages": [
+     {
+      "title": "LangChain vs LangGraph",
+      "href": "/compare/langchain-vs-langgraph",
+      "target": "compare/langchain-vs-langgraph",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "CrewAI vs LangGraph",
+      "href": "/compare/langgraph-vs-crewai",
+      "target": "compare/langgraph-vs-crewai",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "LangGraph agents",
+      "href": "/learn/langgraph-agents",
+      "target": "learn/langgraph-agents",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "LangGraph architecture",
+      "href": "/learn/langgraph-architecture",
+      "target": "learn/langgraph-architecture",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "LangGraph deployment",
+      "href": "/learn/langgraph-deployment",
+      "target": "learn/langgraph-deployment",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "LangGraph SDK",
+      "href": "/learn/langgraph-sdk",
+      "target": "learn/langgraph-sdk",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "mcp",
+    "name": "MCP",
+    "hub": "/mcp",
+    "pages": [
+     {
+      "title": "MCP vs APIs",
+      "href": "/compare/mcp-vs-api",
+      "target": "compare/mcp-vs-api",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "How to build an MCP server",
+      "href": "/guides/build-an-mcp-server",
+      "target": "guides/build-an-mcp-server",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "How to run MCP servers: local, remote, and hosted",
+      "href": "/guides/run-mcp-servers",
+      "target": "guides/run-mcp-servers",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "How to secure MCP servers and clients",
+      "href": "/guides/secure-mcp",
+      "target": "guides/secure-mcp",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "What is an MCP server?",
+      "href": "/learn/what-is-an-mcp-server",
+      "target": "learn/what-is-an-mcp-server",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "MCP architecture, explained",
+      "href": "/learn/mcp-architecture",
+      "target": "learn/mcp-architecture",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "prompt-engineering",
+    "name": "Prompt Engineering",
+    "hub": "/prompt-engineering",
+    "pages": [
+     {
+      "title": "Context engineering vs prompt engineering",
+      "href": "/compare/prompt-engineering-vs-context-engineering",
+      "target": "compare/prompt-engineering-vs-context-engineering",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "How to do prompt engineering",
+      "href": "/guides/how-to-prompt-engineering",
+      "target": "guides/how-to-prompt-engineering",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "Prompt engineering tutorial",
+      "href": "/guides/prompt-engineering-tutorial",
+      "target": "guides/prompt-engineering-tutorial",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "Prompt engineering techniques that survive contact with production",
+      "href": "/learn/prompt-engineering-techniques",
+      "target": "learn/prompt-engineering-techniques",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Advanced prompt engineering",
+      "href": "/learn/advanced-prompt-engineering",
+      "target": "learn/advanced-prompt-engineering",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Prompt engineering for generative AI",
+      "href": "/learn/prompt-engineering-for-generative-ai",
+      "target": "learn/prompt-engineering-for-generative-ai",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Is prompt engineering still relevant?",
+      "href": "/learn/is-prompt-engineering-still-relevant",
+      "target": "learn/is-prompt-engineering-still-relevant",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "AI prompt engineering",
+      "href": "/learn/ai-prompt-engineering",
+      "target": "learn/ai-prompt-engineering",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   },
+   {
+    "slug": "rag",
+    "name": "RAG",
+    "hub": "/rag",
+    "pages": [
+     {
+      "title": "RAG vs fine-tuning",
+      "href": "/compare/rag-vs-fine-tuning",
+      "target": "compare/rag-vs-fine-tuning",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Retrieval-augmented generation tutorial",
+      "href": "/guides/rag-tutorial",
+      "target": "guides/rag-tutorial",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "RAG architecture: the pipeline and its decision points",
+      "href": "/learn/rag-architecture",
+      "target": "learn/rag-architecture",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "Agentic RAG: retrieval inside the loop",
+      "href": "/learn/agentic-rag",
+      "target": "learn/agentic-rag",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "RAG framework",
+      "href": "/learn/rag-framework",
+      "target": "learn/rag-framework",
+      "section": "learn",
+      "live": true
+     },
+     {
+      "title": "RAG use cases",
+      "href": "/learn/rag-use-cases",
+      "target": "learn/rag-use-cases",
+      "section": "learn",
+      "live": true
+     }
+    ],
+    "live": true
+   }
+  ],
+  "sections": [
+   {
+    "slug": "compare",
+    "label": "Compare",
+    "_note": "Ordered by DataForSEO Google Ads search volume (US, Jun 2026)",
+    "items": [
+     {
+      "title": "LangChain vs LangGraph",
+      "href": "/compare/langchain-vs-langgraph",
+      "target": "compare/langchain-vs-langgraph",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "RBAC vs ABAC for AI agents",
+      "href": "/compare/rbac-vs-abac-for-agents",
+      "target": "compare/rbac-vs-abac-for-agents",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Agentic AI vs AI agents",
+      "href": "/compare/agentic-ai-vs-ai-agents",
+      "target": "compare/agentic-ai-vs-ai-agents",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "RAG vs fine-tuning",
+      "href": "/compare/rag-vs-fine-tuning",
+      "target": "compare/rag-vs-fine-tuning",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "Context engineering vs prompt engineering",
+      "href": "/compare/prompt-engineering-vs-context-engineering",
+      "target": "compare/prompt-engineering-vs-context-engineering",
+      "section": "compare",
+      "live": true
+     },
+     {
+      "title": "CrewAI vs LangGraph",
+      "href": "/compare/langgraph-vs-crewai",
+      "target": "compare/langgraph-vs-crewai",
+      "section": "compare",
+      "live": true
+     }
+    ],
+    "viewAll": "/compare",
+    "viewAllLabel": "All comparisons"
+   },
+   {
+    "slug": "guides",
+    "label": "Guides",
+    "_note": "Ordered by DataForSEO Google Ads search volume (US, Jun 2026)",
+    "items": [
+     {
+      "title": "How to govern agentic AI",
+      "href": "/guides/govern-agentic-ai",
+      "target": "guides/govern-agentic-ai",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "Prompt engineering tutorial",
+      "href": "/guides/prompt-engineering-tutorial",
+      "target": "guides/prompt-engineering-tutorial",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "How to implement agent observability",
+      "href": "/guides/implement-agent-observability",
+      "target": "guides/implement-agent-observability",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "How to adopt an AI security framework that actually changes anything",
+      "href": "/guides/adopt-an-ai-security-framework",
+      "target": "guides/adopt-an-ai-security-framework",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "How to build an MCP server",
+      "href": "/guides/build-an-mcp-server",
+      "target": "guides/build-an-mcp-server",
+      "section": "guides",
+      "live": true
+     },
+     {
+      "title": "How to evaluate AI agents",
+      "href": "/guides/evaluate-ai-agents",
+      "target": "guides/evaluate-ai-agents",
+      "section": "guides",
+      "live": true
+     }
+    ],
+    "viewAll": "/guides",
+    "viewAllLabel": "All guides"
+   },
+   {
+    "slug": "learn",
+    "label": "Learn",
+    "items": [
+     {
+      "title": "What is an MCP server?",
+      "href": "/learn/what-is-an-mcp-server",
+      "target": "learn/what-is-an-mcp-server",
+      "section": "learn",
+      "category": "MCP",
+      "live": true
+     },
+     {
+      "title": "MCP architecture, explained",
+      "href": "/learn/mcp-architecture",
+      "target": "learn/mcp-architecture",
+      "section": "learn",
+      "category": "MCP",
+      "live": true
+     },
+     {
+      "title": "Agentic AI architecture: the loop and its parts",
+      "href": "/learn/agentic-ai-architecture",
+      "target": "learn/agentic-ai-architecture",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "Agentic AI frameworks: the landscape and how to choose",
+      "href": "/learn/agentic-ai-frameworks",
+      "target": "learn/agentic-ai-frameworks",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "Agentic AI examples: where the loop does real work",
+      "href": "/learn/agentic-ai-examples",
+      "target": "learn/agentic-ai-examples",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "AI security risks: a working taxonomy",
+      "href": "/learn/ai-security-risks",
+      "target": "learn/ai-security-risks",
+      "section": "learn",
+      "category": "AI security",
+      "live": true
+     },
+     {
+      "title": "AI in cybersecurity: what it does, and what it doesn't",
+      "href": "/learn/ai-in-cybersecurity",
+      "target": "learn/ai-in-cybersecurity",
+      "section": "learn",
+      "category": "AI security",
+      "live": true
+     },
+     {
+      "title": "Will AI replace cybersecurity jobs?",
+      "href": "/learn/will-ai-replace-cybersecurity",
+      "target": "learn/will-ai-replace-cybersecurity",
+      "section": "learn",
+      "category": "AI security",
+      "live": true
+     },
+     {
+      "title": "RAG architecture: the pipeline and its decision points",
+      "href": "/learn/rag-architecture",
+      "target": "learn/rag-architecture",
+      "section": "learn",
+      "category": "RAG",
+      "live": true
+     },
+     {
+      "title": "Agentic RAG: retrieval inside the loop",
+      "href": "/learn/agentic-rag",
+      "target": "learn/agentic-rag",
+      "section": "learn",
+      "category": "RAG",
+      "live": true
+     },
+     {
+      "title": "Prompt engineering techniques that survive contact with production",
+      "href": "/learn/prompt-engineering-techniques",
+      "target": "learn/prompt-engineering-techniques",
+      "section": "learn",
+      "category": "Prompt engineering",
+      "live": true
+     },
+     {
+      "title": "AI governance best practices that operate, not decorate",
+      "href": "/learn/ai-governance-best-practices",
+      "target": "learn/ai-governance-best-practices",
+      "section": "learn",
+      "category": "AI governance",
+      "live": true
+     },
+     {
+      "title": "Autonomous AI agents: what autonomy actually means",
+      "href": "/learn/autonomous-ai-agents",
+      "target": "learn/autonomous-ai-agents",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "Multi-agent systems: when one agent becomes several",
+      "href": "/learn/multi-agent-systems",
+      "target": "learn/multi-agent-systems",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "AI voice agents: the stack, the stakes, and the readiness gap",
+      "href": "/learn/ai-voice-agents",
+      "target": "learn/ai-voice-agents",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "AI agents for business: where they pay and where they bite",
+      "href": "/learn/ai-agents-for-business",
+      "target": "learn/ai-agents-for-business",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "No-code AI agents: what the builders buy you, and what they don't",
+      "href": "/learn/no-code-ai-agents",
+      "target": "learn/no-code-ai-agents",
+      "section": "learn",
+      "category": "Agentic AI",
+      "live": true
+     },
+     {
+      "title": "What is agent observability?",
+      "href": "/learn/agent-observability",
+      "target": "learn/agent-observability",
+      "section": "learn",
+      "category": "Agent Observability",
+      "live": true
+     },
+     {
+      "title": "What is LLM observability?",
+      "href": "/learn/llm-observability",
+      "target": "learn/llm-observability",
+      "section": "learn",
+      "category": "Agent Observability",
+      "live": true
+     },
+     {
+      "title": "What is LLM evaluation?",
+      "href": "/learn/llm-evaluation",
+      "target": "learn/llm-evaluation",
+      "section": "learn",
+      "category": "Agent Observability",
+      "live": true
+     },
+     {
+      "title": "What is agent evaluation?",
+      "href": "/learn/agent-evaluation",
+      "target": "learn/agent-evaluation",
+      "section": "learn",
+      "category": "Agent Observability",
+      "live": true
+     },
+     {
+      "title": "AI agents use cases",
+      "href": "/learn/ai-agents-use-cases",
+      "target": "learn/ai-agents-use-cases",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "What is an AI agent workflow?",
+      "href": "/learn/ai-agents-workflow",
+      "target": "learn/ai-agents-workflow",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "How do AI agents work?",
+      "href": "/learn/how-do-ai-agents-work",
+      "target": "learn/how-do-ai-agents-work",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "What is an AI agents framework?",
+      "href": "/learn/ai-agents-framework",
+      "target": "learn/ai-agents-framework",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI agents for automation",
+      "href": "/learn/ai-agents-for-automation",
+      "target": "learn/ai-agents-for-automation",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI agents for customer service",
+      "href": "/learn/ai-agents-for-customer-service",
+      "target": "learn/ai-agents-for-customer-service",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI agents for data analysis",
+      "href": "/learn/ai-agents-for-data-analysis",
+      "target": "learn/ai-agents-for-data-analysis",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "What are conversational AI agents?",
+      "href": "/learn/conversational-ai-agents",
+      "target": "learn/conversational-ai-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "What are multimodal AI agents?",
+      "href": "/learn/multimodal-ai-agents",
+      "target": "learn/multimodal-ai-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "What is AI governance?",
+      "href": "/learn/ai-governance",
+      "target": "learn/ai-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "What is an AI governance framework?",
+      "href": "/learn/ai-governance-framework",
+      "target": "learn/ai-governance-framework",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "What is an AI governance policy?",
+      "href": "/learn/ai-governance-policy",
+      "target": "learn/ai-governance-policy",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "AI governance principles",
+      "href": "/learn/ai-governance-principles",
+      "target": "learn/ai-governance-principles",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "AI ethics and governance",
+      "href": "/learn/ai-ethics-and-governance",
+      "target": "learn/ai-ethics-and-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "What is AI agent governance?",
+      "href": "/learn/ai-agent-governance",
+      "target": "learn/ai-agent-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "Generative AI governance",
+      "href": "/learn/generative-ai-governance",
+      "target": "learn/generative-ai-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "AI agent security",
+      "href": "/learn/ai-agents-security",
+      "target": "learn/ai-agents-security",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI coding agents",
+      "href": "/learn/ai-coding-agents",
+      "target": "learn/ai-coding-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI sales agents",
+      "href": "/learn/ai-sales-agents",
+      "target": "learn/ai-sales-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "Types of AI agents",
+      "href": "/learn/types-of-ai-agents",
+      "target": "learn/types-of-ai-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI browser agents",
+      "href": "/learn/ai-browser-agents",
+      "target": "learn/ai-browser-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "Custom AI agents",
+      "href": "/learn/custom-ai-agents",
+      "target": "learn/custom-ai-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI governance standards",
+      "href": "/learn/ai-governance-standards",
+      "target": "learn/ai-governance-standards",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "What is AI model governance?",
+      "href": "/learn/ai-model-governance",
+      "target": "learn/ai-model-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "AI risk governance",
+      "href": "/learn/ai-risk-governance",
+      "target": "learn/ai-risk-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "What is responsible AI governance?",
+      "href": "/learn/responsible-ai-governance",
+      "target": "learn/responsible-ai-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "NIST AI governance framework",
+      "href": "/learn/nist-ai-governance-framework",
+      "target": "learn/nist-ai-governance-framework",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "Advanced prompt engineering",
+      "href": "/learn/advanced-prompt-engineering",
+      "target": "learn/advanced-prompt-engineering",
+      "section": "learn",
+      "category": "Prompt Engineering",
+      "live": true
+     },
+     {
+      "title": "Prompt engineering for generative AI",
+      "href": "/learn/prompt-engineering-for-generative-ai",
+      "target": "learn/prompt-engineering-for-generative-ai",
+      "section": "learn",
+      "category": "Prompt Engineering",
+      "live": true
+     },
+     {
+      "title": "Is prompt engineering still relevant?",
+      "href": "/learn/is-prompt-engineering-still-relevant",
+      "target": "learn/is-prompt-engineering-still-relevant",
+      "section": "learn",
+      "category": "Prompt Engineering",
+      "live": true
+     },
+     {
+      "title": "RAG framework",
+      "href": "/learn/rag-framework",
+      "target": "learn/rag-framework",
+      "section": "learn",
+      "category": "RAG",
+      "live": true
+     },
+     {
+      "title": "RAG use cases",
+      "href": "/learn/rag-use-cases",
+      "target": "learn/rag-use-cases",
+      "section": "learn",
+      "category": "RAG",
+      "live": true
+     },
+     {
+      "title": "LangChain agents",
+      "href": "/learn/langchain-agents",
+      "target": "learn/langchain-agents",
+      "section": "learn",
+      "category": "LangChain",
+      "live": true
+     },
+     {
+      "title": "LangChain memory",
+      "href": "/learn/langchain-memory",
+      "target": "learn/langchain-memory",
+      "section": "learn",
+      "category": "LangChain",
+      "live": true
+     },
+     {
+      "title": "LangGraph agents",
+      "href": "/learn/langgraph-agents",
+      "target": "learn/langgraph-agents",
+      "section": "learn",
+      "category": "LangGraph",
+      "live": true
+     },
+     {
+      "title": "LangGraph architecture",
+      "href": "/learn/langgraph-architecture",
+      "target": "learn/langgraph-architecture",
+      "section": "learn",
+      "category": "LangGraph",
+      "live": true
+     },
+     {
+      "title": "CrewAI agents",
+      "href": "/learn/crewai-agents",
+      "target": "learn/crewai-agents",
+      "section": "learn",
+      "category": "CrewAI",
+      "live": true
+     },
+     {
+      "title": "CrewAI framework",
+      "href": "/learn/crewai-framework",
+      "target": "learn/crewai-framework",
+      "section": "learn",
+      "category": "CrewAI",
+      "live": true
+     },
+     {
+      "title": "Generative AI models",
+      "href": "/learn/generative-ai-models",
+      "target": "learn/generative-ai-models",
+      "section": "learn",
+      "category": "Generative AI",
+      "live": true
+     },
+     {
+      "title": "Generative AI use cases",
+      "href": "/learn/generative-ai-use-cases",
+      "target": "learn/generative-ai-use-cases",
+      "section": "learn",
+      "category": "Generative AI",
+      "live": true
+     },
+     {
+      "title": "Model Context Protocol (MCP)",
+      "href": "/learn/model-context-protocol",
+      "target": "learn/model-context-protocol",
+      "section": "learn",
+      "category": "Model Context Protocol",
+      "live": true
+     },
+     {
+      "title": "What is an MCP server?",
+      "href": "/learn/mcp-server",
+      "target": "learn/mcp-server",
+      "section": "learn",
+      "category": "Model Context Protocol",
+      "live": true
+     },
+     {
+      "title": "What is an MCP client?",
+      "href": "/learn/mcp-client",
+      "target": "learn/mcp-client",
+      "section": "learn",
+      "category": "Model Context Protocol",
+      "live": true
+     },
+     {
+      "title": "MCP for AI agents",
+      "href": "/learn/mcp-ai-agents",
+      "target": "learn/mcp-ai-agents",
+      "section": "learn",
+      "category": "Model Context Protocol",
+      "live": true
+     },
+     {
+      "title": "How MCP works",
+      "href": "/learn/how-mcp-works",
+      "target": "learn/how-mcp-works",
+      "section": "learn",
+      "category": "Model Context Protocol",
+      "live": true
+     },
+     {
+      "title": "AI security",
+      "href": "/learn/ai-security",
+      "target": "learn/ai-security",
+      "section": "learn",
+      "category": "AI Security",
+      "live": true
+     },
+     {
+      "title": "AI security best practices",
+      "href": "/learn/ai-security-best-practices",
+      "target": "learn/ai-security-best-practices",
+      "section": "learn",
+      "category": "AI Security",
+      "live": true
+     },
+     {
+      "title": "Enterprise AI security",
+      "href": "/learn/enterprise-ai-security",
+      "target": "learn/enterprise-ai-security",
+      "section": "learn",
+      "category": "AI Security",
+      "live": true
+     },
+     {
+      "title": "AI marketing agents",
+      "href": "/learn/ai-marketing-agents",
+      "target": "learn/ai-marketing-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI phone agents",
+      "href": "/learn/ai-phone-agents",
+      "target": "learn/ai-phone-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI travel agents",
+      "href": "/learn/ai-travel-agents",
+      "target": "learn/ai-travel-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "Open source AI agents",
+      "href": "/learn/open-source-ai-agents",
+      "target": "learn/open-source-ai-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI governance and compliance",
+      "href": "/learn/ai-governance-and-compliance",
+      "target": "learn/ai-governance-and-compliance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "AI governance challenges",
+      "href": "/learn/ai-governance-challenges",
+      "target": "learn/ai-governance-challenges",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "AI data governance",
+      "href": "/learn/ai-data-governance",
+      "target": "learn/ai-data-governance",
+      "section": "learn",
+      "category": "AI Governance",
+      "live": true
+     },
+     {
+      "title": "What is generative AI?",
+      "href": "/learn/what-is-generative-ai",
+      "target": "learn/what-is-generative-ai",
+      "section": "learn",
+      "category": "Generative AI",
+      "live": true
+     },
+     {
+      "title": "How does generative AI work?",
+      "href": "/learn/how-does-generative-ai-work",
+      "target": "learn/how-does-generative-ai-work",
+      "section": "learn",
+      "category": "Generative AI",
+      "live": true
+     },
+     {
+      "title": "What is LangChain?",
+      "href": "/learn/what-is-langchain",
+      "target": "learn/what-is-langchain",
+      "section": "learn",
+      "category": "LangChain",
+      "live": true
+     },
+     {
+      "title": "LangChain tools",
+      "href": "/learn/langchain-tools",
+      "target": "learn/langchain-tools",
+      "section": "learn",
+      "category": "LangChain",
+      "live": true
+     },
+     {
+      "title": "LangGraph deployment",
+      "href": "/learn/langgraph-deployment",
+      "target": "learn/langgraph-deployment",
+      "section": "learn",
+      "category": "LangGraph",
+      "live": true
+     },
+     {
+      "title": "LangGraph SDK",
+      "href": "/learn/langgraph-sdk",
+      "target": "learn/langgraph-sdk",
+      "section": "learn",
+      "category": "LangGraph",
+      "live": true
+     },
+     {
+      "title": "CrewAI memory",
+      "href": "/learn/crewai-memory",
+      "target": "learn/crewai-memory",
+      "section": "learn",
+      "category": "CrewAI",
+      "live": true
+     },
+     {
+      "title": "CrewAI use cases",
+      "href": "/learn/crewai-use-cases",
+      "target": "learn/crewai-use-cases",
+      "section": "learn",
+      "category": "CrewAI",
+      "live": true
+     },
+     {
+      "title": "AI prompt engineering",
+      "href": "/learn/ai-prompt-engineering",
+      "target": "learn/ai-prompt-engineering",
+      "section": "learn",
+      "category": "Prompt Engineering",
+      "live": true
+     },
+     {
+      "title": "Local AI agents",
+      "href": "/learn/local-ai-agents",
+      "target": "learn/local-ai-agents",
+      "section": "learn",
+      "category": "AI Agents",
+      "live": true
+     },
+     {
+      "title": "AI Chatbots vs AI Agents",
+      "href": "/learn/ai-chatbot-agents",
+      "target": "learn/ai-chatbot-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Agent Development",
+      "href": "/learn/ai-agents-development",
+      "target": "learn/ai-agents-development",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "What Are AI Virtual Agents",
+      "href": "/learn/ai-virtual-agents",
+      "target": "learn/ai-virtual-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "Intelligent Agents in AI",
+      "href": "/learn/ai-intelligent-agents",
+      "target": "learn/ai-intelligent-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "Personal AI Agents",
+      "href": "/learn/personal-ai-agents",
+      "target": "learn/personal-ai-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "Vertical AI Agents",
+      "href": "/learn/vertical-ai-agents",
+      "target": "learn/vertical-ai-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Shopping Agents",
+      "href": "/learn/ai-shopping-agents",
+      "target": "learn/ai-shopping-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Agents for Small Businesses",
+      "href": "/learn/ai-agents-for-small-businesses",
+      "target": "learn/ai-agents-for-small-businesses",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Agents in Real Estate",
+      "href": "/learn/ai-real-estate-agents",
+      "target": "learn/ai-real-estate-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Design Agents",
+      "href": "/learn/ai-design-agents",
+      "target": "learn/ai-design-agents",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Agent Integration",
+      "href": "/learn/ai-agents-integration",
+      "target": "learn/ai-agents-integration",
+      "section": "learn",
+      "category": "ai-agents",
+      "live": true
+     },
+     {
+      "title": "AI Governance Audit",
+      "href": "/learn/ai-governance-audit",
+      "target": "learn/ai-governance-audit",
+      "section": "learn",
+      "category": "ai-governance",
+      "live": true
+     },
+     {
+      "title": "AI Governance in Healthcare",
+      "href": "/learn/ai-governance-in-healthcare",
+      "target": "learn/ai-governance-in-healthcare",
+      "section": "learn",
+      "category": "ai-governance",
+      "live": true
+     },
+     {
+      "title": "AI Governance Strategy",
+      "href": "/learn/ai-governance-strategy",
+      "target": "learn/ai-governance-strategy",
+      "section": "learn",
+      "category": "ai-governance",
+      "live": true
+     },
+     {
+      "title": "AI Lifecycle Governance",
+      "href": "/learn/ai-lifecycle-governance",
+      "target": "learn/ai-lifecycle-governance",
+      "section": "learn",
+      "category": "ai-governance",
+      "live": true
+     },
+     {
+      "title": "AI-Powered Cybersecurity Threats",
+      "href": "/learn/ai-cyber-security-threats",
+      "target": "learn/ai-cyber-security-threats",
+      "section": "learn",
+      "category": "ai-security",
+      "live": true
+     },
+     {
+      "title": "Agentic AI Design Patterns",
+      "href": "/learn/agentic-ai-design-patterns",
+      "target": "learn/agentic-ai-design-patterns",
+      "section": "learn",
+      "category": "agentic-ai",
+      "live": true
+     },
+     {
+      "title": "Agentic AI Orchestration",
+      "href": "/learn/agentic-ai-orchestration",
+      "target": "learn/agentic-ai-orchestration",
+      "section": "learn",
+      "category": "agentic-ai",
+      "live": true
+     },
+     {
+      "title": "Generative AI Video Models",
+      "href": "/learn/generative-ai-video-models",
+      "target": "learn/generative-ai-video-models",
+      "section": "learn",
+      "category": "generative-ai",
+      "live": true
+     }
+    ]
+   },
+   {
+    "slug": "roles",
+    "label": "Roles",
+    "items": [
+     {
+      "title": "Agent readiness for CTOs",
+      "href": "/roles/cto",
+      "target": "roles/cto",
+      "section": "roles",
+      "live": true
+     },
+     {
+      "title": "Agent readiness for CISOs",
+      "href": "/roles/ciso",
+      "target": "roles/ciso",
+      "section": "roles",
+      "live": true
+     },
+     {
+      "title": "Agent readiness for heads of AI",
+      "href": "/roles/head-of-ai",
+      "target": "roles/head-of-ai",
+      "section": "roles",
+      "live": true
+     },
+     {
+      "title": "Agent readiness for platform engineers",
+      "href": "/roles/platform-engineer",
+      "target": "roles/platform-engineer",
+      "section": "roles",
+      "live": true
+     },
+     {
+      "title": "Agent readiness for CIOs",
+      "href": "/roles/cio",
+      "target": "roles/cio",
+      "section": "roles",
+      "live": true
+     },
+     {
+      "title": "Agent readiness for AI engineers",
+      "href": "/roles/ai-engineer",
+      "target": "roles/ai-engineer",
+      "section": "roles",
+      "live": true
+     }
+    ]
+   },
+   {
+    "slug": "industries",
+    "label": "Industries",
+    "items": [
+     {
+      "title": "AI agent readiness in financial services",
+      "href": "/industries/financial-services",
+      "target": "industries/financial-services",
+      "section": "industries",
+      "live": true
+     },
+     {
+      "title": "AI agent readiness in healthcare",
+      "href": "/industries/healthcare",
+      "target": "industries/healthcare",
+      "section": "industries",
+      "live": true
+     },
+     {
+      "title": "AI agent readiness in SaaS companies",
+      "href": "/industries/saas",
+      "target": "industries/saas",
+      "section": "industries",
+      "live": true
+     },
+     {
+      "title": "AI agent readiness in insurance",
+      "href": "/industries/insurance",
+      "target": "industries/insurance",
+      "section": "industries",
+      "live": true
+     }
+    ]
+   }
+  ]
+ },
+ "upcoming": {
+  "tools": [
+   {
+    "title": "Agentic Ai Coding Tools",
+    "target": "tools/agentic-ai-coding-tools",
+    "pillar": "agentic-ai",
+    "deduped_volume": 14000
+   },
+   {
+    "title": "Agentic Ai Platforms",
+    "target": "tools/agentic-ai-platforms",
+    "pillar": "agentic-ai",
+    "deduped_volume": 3660
+   },
+   {
+    "title": "Best Agentic Ai Tools",
+    "target": "tools/best-agentic-ai-tools",
+    "pillar": "agentic-ai",
+    "deduped_volume": 3350
+   },
+   {
+    "title": "Servicenow Agentic Ai",
+    "target": "tools/servicenow-agentic-ai",
+    "pillar": "agentic-ai",
+    "deduped_volume": 780
+   },
+   {
+    "title": "Agentic Ai Vendor Landscape",
+    "target": "tools/agentic-ai-vendor-landscape",
+    "pillar": "agentic-ai",
+    "deduped_volume": 1310
+   },
+   {
+    "title": "Aws Agentic Ai",
+    "target": "tools/aws-agentic-ai",
+    "pillar": "agentic-ai",
+    "deduped_volume": 1090
+   },
+   {
+    "title": "Google Agentic Ai",
+    "target": "tools/google-agentic-ai",
+    "pillar": "agentic-ai",
+    "deduped_volume": 950
+   },
+   {
+    "title": "Microsoft Agentic Ai",
+    "target": "tools/microsoft-agentic-ai",
+    "pillar": "agentic-ai",
+    "deduped_volume": 930
+   },
+   {
+    "title": "Nvidia Agentic Ai",
+    "target": "tools/nvidia-agentic-ai",
+    "pillar": "agentic-ai",
+    "deduped_volume": 400
+   },
+   {
+    "title": "Best Mcp Servers",
+    "target": "tools/best-mcp-servers",
+    "pillar": "mcp",
+    "deduped_volume": 5310
+   },
+   {
+    "title": "Ai Security Vendor Landscape",
+    "target": "tools/ai-security-vendor-landscape",
+    "pillar": "ai-security",
+    "deduped_volume": 2980
+   },
+   {
+    "title": "Best Ai Security Tools",
+    "target": "tools/best-ai-security-tools",
+    "pillar": "ai-security",
+    "deduped_volume": 8280
+   }
+  ]
+ }
+}
